@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'devise'
 gem 'letter_opener', group: :development
+gem 'erb2haml', group: :development
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
