@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require jquery.autotab.min.js
+
+
+$( document ).ready(function() {
+  $('.number').autotab('number');
+  $('.alphanumeric').autotab('alphanumeric');
+});
