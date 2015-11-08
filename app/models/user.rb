@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :phone_number_1, :phone_number_2, :phone_number_3
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,5 +12,6 @@ class User < ActiveRecord::Base
   validates_presence_of :client_driver_license
   validates_presence_of :client_dob
   validates_presence_of :client_registration_ip
+
 end
 
