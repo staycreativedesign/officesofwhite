@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :test do
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'poltergeist'
 end
