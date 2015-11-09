@@ -18,4 +18,5 @@
 $( document ).ready(function() {
   $('.number').autotab('number');
   $('.alphanumeric').autotab('alphanumeric');
+  $('.ssn').autotab('number');
 });
