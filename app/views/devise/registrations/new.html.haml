@@ -3,8 +3,37 @@
   = devise_error_messages!
   .field
     = f.label :suffix
-    %br/
-    = f.select :suffix, suffix_options, {}, prompt: 'Select Title'
+    = f.select :suffix, suffix_options, { prompt: 'Select Title' }
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :middle_name
+    = f.text_field :middle_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label "Phone Number"
+    = f.text_field :phone_number_1, class: 'number', size: 4, maxlength: 3
+    = f.text_field :phone_number_2, class: 'number', size: 4, maxlength: 3
+    = f.text_field :phone_number_3, class: 'number', size: 5, maxlength: 4
+  .field
+    = f.label "Other Phone"
+    =f.text_field :other_phone_number_1, class: 'number', size: 4, maxlength: 3
+    =f.text_field :other_phone_number_2, class: 'number', size: 4, maxlength: 3
+    =f.text_field :other_phone_number_3, class: 'number', size: 4, maxlength: 4
+  .field
+    = f.label "Driver License Number"
+    = f.text_field :client_driver_license, class: 'alphanumeric', size: 12, maxlength:11
+  .field
+    = f.label "Social Security Number"
+    = f.text_field :client_ss_1, class: 'number', size: 4, maxlength: 3
+    = f.text_field :client_ss_2, class: 'number', size: 3, maxlength: 3
+    = f.text_field :client_ss_3, class: 'number', size: 5, maxlength: 4
+  .field
+    = f.label "Your Date of Birth"
+    = f.date_select(:client_dob, date_of_birth_options)
   .field
     = f.label :password
     - if @minimum_password_length

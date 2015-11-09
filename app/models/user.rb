@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :phone_number_1, :phone_number_2, :phone_number_3
+  attr_accessor :phone_number_1, :phone_number_2, :phone_number_3, :other_phone_number_1, :other_phone_number_2, :other_phone_number_3, :client_ss_1, :client_ss_2, :client_ss_3
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
