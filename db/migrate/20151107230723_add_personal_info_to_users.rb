@@ -5,9 +5,10 @@ class AddPersonalInfoToUsers < ActiveRecord::Migration
     add_column :users, :suffix, :string
     add_column :users, :middle_name, :string
     add_column :users, :phone_number, :integer
-    add_column :users, :client_driver_license, :string
-    add_column :users, :client_social_security, :integer
-    add_column :users, :client_dob, :date
-    add_column :users, :client_registration_ip, :string
+    add_column :users, :other_number, :integer
+    add_column :users, :driver_license, :string
+    add_column :users, :social_security, :integer
+    add_column :users, :dob, :date
+    add_column :users, :registration_ip, :string
   end
 end
