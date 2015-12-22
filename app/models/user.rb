@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates_presence_of :driver_license
   validates_presence_of :dob
   validates_presence_of :registration_ip
+
   validates_presence_of :home_address
   validates_presence_of :city
   validates_presence_of :zipcode
