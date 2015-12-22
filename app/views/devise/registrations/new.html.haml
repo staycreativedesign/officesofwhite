@@ -25,15 +25,15 @@
     =f.text_field :other_phone_number_3, class: 'number', size: 4, maxlength: 4
   .field
     = f.label "Driver License Number"
-    = f.text_field :client_driver_license, class: 'alphanumeric', size: 12, maxlength:11
+    = f.text_field :driver_license, class: 'alphanumeric', size: 12, maxlength:11
   .field
     = f.label "Social Security Number"
-    = f.text_field :client_ss_1, class: 'ssn', size: 4, maxlength: 3
-    = f.text_field :client_ss_2, class: 'ssn', size: 3, maxlength: 3
-    = f.text_field :client_ss_3, class: 'ssn', size: 5, maxlength: 4
+    = f.text_field :ss_1, class: 'ssn', size: 4, maxlength: 3
+    = f.text_field :ss_2, class: 'ssn', size: 3, maxlength: 3
+    = f.text_field :ss_3, class: 'ssn', size: 5, maxlength: 4
   .field
     = f.label "Your Date of Birth"
-    = f.date_select(:client_dob, date_of_birth_options)
+    = f.date_select(:dob, date_of_birth_options)
   .field
     = f.label :password
     - if @minimum_password_length
