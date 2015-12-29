@@ -5,46 +5,150 @@
     = f.label :suffix
     = f.select :suffix, suffix_options, { prompt: 'Select Title' }
   .field
-    = f.label :first_name
+    = f.label :first_name, "First Name:"
     = f.text_field :first_name
   .field
-    = f.label :middle_name
+    = f.label :middle_name, "Middle Name:"
     = f.text_field :middle_name
   .field
-    = f.label :last_name
+    = f.label :last_name, "Last Name:"
     = f.text_field :last_name
   .field
-    = f.label "Phone Number"
+    = f.label "Primary Phone Number:"
     = f.text_field :phone_number_1, class: 'number', size: 4, maxlength: 3
     = f.text_field :phone_number_2, class: 'number', size: 4, maxlength: 3
     = f.text_field :phone_number_3, class: 'number', size: 5, maxlength: 4
   .field
-    = f.label "Other Phone"
+    = f.label "Other Phone Number:"
     =f.text_field :other_phone_number_1, class: 'number', size: 4, maxlength: 3
     =f.text_field :other_phone_number_2, class: 'number', size: 4, maxlength: 3
     =f.text_field :other_phone_number_3, class: 'number', size: 4, maxlength: 4
   .field
-    = f.label "Driver License Number"
+    = f.label "Driver License Number:"
     = f.text_field :driver_license, class: 'alphanumeric', size: 12, maxlength:11
   .field
-    = f.label "Social Security Number"
+    = f.label "Social Security Number:"
     = f.text_field :ss_1, class: 'ssn', size: 4, maxlength: 3
     = f.text_field :ss_2, class: 'ssn', size: 3, maxlength: 3
     = f.text_field :ss_3, class: 'ssn', size: 5, maxlength: 4
   .field
-    = f.label "Your Date of Birth"
+    = f.label "Your Date of Birth:"
     = f.date_select(:dob, date_of_birth_options)
   .field
+    = f.label :home_address
+    = f.text_field :home_address
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :state
+    = f.select :state, states_abbr
+  .field
+    = f.label :zipcode
+    = f.text_field :zipcode, size: 6, maxlength: 5
+  .field
+    = f.label :time_at_address_months, "Months at current residence"
+    = f.select :time_at_address_months, time_at_address(12), prompt: "Months"
+  .field
+    = f.label :time_at_address_years, "Years at current address"
+    = f.select :time_at_address_years, time_at_address(40), prompt: "Years"
+  .field
+    = f.label :residence_type
+    = f.select :residence_type, residence_type, prompt: "Select type"
+  .field
+    = f.label :household_payment
+    = f.text_field :household_payment
+  .field
+    = f.label :employer_name
+    = f.text_field :employer_name
+  .field
+    = f.label :occupation
+    = f.text_field :occupation
+  .field
+    = f.label :employment_address
+    = f.text_field :employment_address
+  .field
+    = f.label :employment_state
+    = f.select :employment_state, states_abbr
+  .field
+    = f.label :employment_city
+    = f.text_field :employment_city
+  .field
+    = f.label :employment_zipcode
+    = f.text_field :employment_zipcode, size: 6, maxlenght: 5
+  .field
+    = f.label "Employer Phone Number:"
+    = f.text_field :employment_phone_1, class: 'number', size: 4, maxlength: 3
+    = f.text_field :employment_phone_2, class: 'number', size: 4, maxlength: 3
+    = f.text_field :employment_phone_3, class: 'number', size: 5, maxlength: 4
+  .field
+    = f.label :employment_months, "Employment Months"
+    = f.select :employment_months, time_at_address(12), prompt: "Months"
+  .field
+    = f.label :employment_years, "Employment Years"
+    = f.select :employment_years, time_at_address(40), prompt: "Years"
+  .field
+    = f.label :employment_gross_income, "Gross monthly income"
+    = f.text_field :employment_gross_income, class: "number"
+  .field
+    = f.label :credit_login
+    = f.text_field :credit_login
+  .field
+    = f.label :credit_password
+    = f.password_field :credit_password
+  .field
+    = f.label :credit_security_answer
+    = f.text_field :credit_security_answer
+  .field
+    = f.label :credit_mother_dob
+    = f.date_select(:credit_mother_dob, date_of_birth_options)
+  .field
+    = f.label :referred_by
+    = f.text_field :referred_by
+  .field
     = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
     = f.password_field :password, autocomplete: "off"
   .field
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+  .field
+    = label_tag do
+      = check_box_tag('correct_information', '1')
+      I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
+  .field
+    = label_tag do
+      = check_box_tag('accept_statement', '1')
+      I understand that it is a federal crime to obtain personal credit information for someone other than myself.
+  .field
+    = label_tag do
+      = check_box_tag('final_statement', '1')
+      The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
+  #signature.field.hidden
+    %p Welcome please sign
+:javascript
+  $(function(){
+    var $checkboxes = $("input[type='checkbox']");
+    var $number = $checkboxes.length
+    var $checked = 0
+    console.log($checkboxes);
+    console.log($number);
+
+    function checkedIsEqualToNumber() {
+      if ($checked == $number) {
+        $('#signature').removeClass( "hidden" )
+      } else {
+        $('#signature').addClass( "hidden" )
+      }
+    };
+
+    $checkboxes.on('change', function(e){
+      if ($(this).is(':checked')) {
+        $checked += 1
+      } else {
+        $checked -= 1
+      }
+      console.log($checked);
+      checkedIsEqualToNumber();
+    });
+  });
