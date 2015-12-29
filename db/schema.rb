@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109011909) do
+ActiveRecord::Schema.define(version: 20151228200515) do
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "suffix"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 20151109011909) do
     t.string   "time_at_address_years"
     t.string   "household_payment"
     t.string   "residence_type"
+    t.string   "state"
+    t.string   "employer_name"
+    t.string   "occupation"
+    t.string   "employment_address"
+    t.string   "employment_state"
+    t.string   "employment_city"
+    t.string   "employment_zipcode"
+    t.string   "employment_phone"
+    t.string   "employment_gross_income"
+    t.string   "employment_years"
+    t.string   "employment_months"
+    t.string   "credit_login"
+    t.string   "credit_password"
+    t.string   "credit_security_answer"
+    t.date     "credit_mother_dob"
+    t.string   "referred_by"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
