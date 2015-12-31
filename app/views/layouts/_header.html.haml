@@ -1,3 +1,15 @@
-.row
-  .col-md-6.col-md-offset-3
-    %p Hello
+.section.header{:class => location}
+  .container-fluid
+    .row
+      .col-sm-6.col-md-8
+        %p Hello
+      .col-sm-6.col-md-4
+        = link_to "800-632-WHITE529", "tel:800-63294483529", class: "pull-right"
+    .row
+      .col-sm-8.col-centered
+        = render partial: "layouts/navigation"
+    .row
+      .col-sm-6.col-centered
+        %strong
+          Every two seconds another American becomes a victim of identity fraud.,
+          We specialize in helping victims of identity theft and have over 25+ years of knowledge and experience.
