@@ -1,0 +1,15 @@
+$tablet-width: 768px
+$desktop-width: 992px
+$lg-desktop-width: 1200px
+=tablet
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})
+    @content
+
+=desktop
+  @media (min-width: #{$desktop-width}) and (max-width: #{$lg-desktop-width - 1px})
+    @content
+
+=lg-desktop
+  @media (min-width: #{$lg-desktop-width})
+    @content
+

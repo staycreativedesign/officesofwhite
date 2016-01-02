@@ -1,20 +1,13 @@
+@import "base/globals";
+@import "base/fonts";
+@import "base/transitions";
+@import "base/mixins";
+@import "base/media_queries";
+@import "pages/index";
+@import "pages/navigation";
 // 1. Globals
 // everything that is used more than once through site
-//
-.hidden {display: none;}
-.col-centered {margin: 0 auto;float:none!important;}
-.white {color:white;}
-.black {color:black;}
-// 2. Header
-// everything that is used inside the header
-.header {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-  overflow: hidden;
-}
+.bold {font-weight: bold;}
+img {max-width: 100%;}
+a {color:white;}
 
-.index-bg {
-  height: 565px;
-  background-image: image-url("slider_index.jpg");
-}
