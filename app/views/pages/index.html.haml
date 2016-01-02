@@ -1,2 +1,33 @@
 .row
   .col-md-12
+:javascript
+  $(document).ready(function(){
+    var allIds = [];
+
+    $('strong').each(function() {
+      allIds.push($(this).prop('id'));
+    });
+
+    $('#fade-2').hide();
+    fadeSentence($('#fade-1'));
+
+   t commit -m "WIP"
+   function fadeSentence($sentence) {
+      $sentence.fadeIn(function() { // callback function
+        $sentence.delay(6000).fadeOut(function() { // callback to the callback
+          fadeSentence(nextSentence($sentence)); // recursively do it again with the opposite element
+        });
+      });
+    }
+
+    function nextSentence($current) {
+      var next = getNextId($current.prop('id'));
+      return $('#' + next);
+    }
+
+    function getNextId(current) {
+      var index = allIds.indexOf(current);
+      if (index === allIds.length - 1) { return allIds[0]; }
+      return allIds[index + 1];
+    }
+  });
