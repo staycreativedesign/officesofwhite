@@ -1,0 +1,16 @@
+.row
+  .col-md-12.text-shadow.text-uppercase
+    .menu
+      %ul.list-inline
+        %li
+          = link_to "About the firm", "#"
+        %li
+          = link_to "Register New Account", "#"
+        %li
+          = link_to "References", "#"
+        %li
+          = link_to "Contact us", "#"
+        %li
+          = link_to "Login", new_user_session_path
+        %li
+          = link_to "Logout", destroy_user_session_path, method: "delete"
