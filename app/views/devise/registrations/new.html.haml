@@ -6,13 +6,13 @@
     = f.select :suffix, suffix_options, { prompt: 'Select Title' }
   .field
     = f.label :first_name, "First Name:"
-    = f.text_field :first_name
+    = f.text_field :first_name, class: "user-name"
   .field
     = f.label :middle_name, "Middle Name:"
-    = f.text_field :middle_name
+    = f.text_field :middle_name, class: "user-middle-name"
   .field
     = f.label :last_name, "Last Name:"
-    = f.text_field :last_name
+    = f.text_field :last_name, class: "user-name"
   .field
     = f.label "Primary Phone Number:"
     = f.text_field :phone_number_1, class: 'number', size: 4, maxlength: 3
@@ -112,43 +112,55 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = label_tag do
-      = check_box_tag('correct_information', '1')
-      I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
-  .field
-    = label_tag do
-      = check_box_tag('accept_statement', '1')
-      I understand that it is a federal crime to obtain personal credit information for someone other than myself.
-  .field
-    = label_tag do
-      = check_box_tag('final_statement', '1')
-      The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
-  #signature.field.hidden
-    %p Welcome please sign
+  .checkboxes-area.hidden
+    .field
+      = label_tag do
+        = check_box_tag('correct_information', '1')
+        I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
+    .field
+      = label_tag do
+        = check_box_tag('accept_statement', '1')
+        I understand that it is a federal crime to obtain personal credit information for someone other than myself.
+    .field
+      = label_tag do
+        = check_box_tag('final_statement', '1')
+        The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
+    #signature.field.hidden
+      %p Welcome please sign
 :javascript
   $(function(){
-    var $checkboxes = $("input[type='checkbox']");
-    var $number = $checkboxes.length
-    var $checked = 0
-    console.log($checkboxes);
-    console.log($number);
 
-    function checkedIsEqualToNumber() {
-      if ($checked === $number) {
+    function checkedIsEqualToNumber(checked, number) {
+      if (checked === number) {
         $('#signature').removeClass( "hidden" )
       } else {
         $('#signature').addClass( "hidden" )
       }
     };
-
-    $checkboxes.on('change', function(e){
-      if ($(this).is(':checked')) {
-        $checked += 1
-      } else {
-        $checked -= 1
+    function getFilledNamesCount() {
+      var $names = $(".user-name");
+      var getNumberOfFilledNames = function() {
+        var totalNumberOfFilledNames = $names.filter(function(){
+          return $(this).val().trim().length;
+        }).length;
+        console.log(totalNumberOfFilledNames);
       }
-      console.log($checked);
-      checkedIsEqualToNumber();
-    });
+      $names.on('change', getNumberOfFilledNames);
+
+    };
+    function checkBoxChange(){
+      var $checkboxes = $("input[type='checkbox']");
+      var $number = $checkboxes.length;
+      var $checked = 0;
+      $checkboxes.on('change', function(e){
+        if ($(this).is(':checked')) {
+          $checked += 1
+        } else {
+          $checked -= 1
+        }
+        checkedIsEqualToNumber($checked, $number);
+      });
+    };
+  checkBoxChange();
+  getFilledNamesCount();
   });

@@ -3,15 +3,15 @@
 :javascript
   $(document).ready(function(){
     var allIds = [];
+    var rotateText = 'strong'
 
-    $('strong').each(function() {
+    $(rotateText).each(function() {
       allIds.push($(this).prop('id'));
     });
 
-    $('#fade-2').hide();
-    fadeSentence($('#fade-1'));
+    $(rotateText).hide();
+    fadeSentence($(rotateText).first());
 
-   t commit -m "WIP"
    function fadeSentence($sentence) {
       $sentence.fadeIn(function() { // callback function
         $sentence.delay(6000).fadeOut(function() { // callback to the callback
