@@ -132,7 +132,10 @@
       %p.full-name
 :javascript
   $(function(){
-
+    var fName = $('.user-name').first().val();
+    var mName = $('.user-middle-name').val();
+    var lName = $('.user-name').last().val();
+    var initials = "";
     function getFilledNamesCount() {
       var $names = $(".user-name");
       var getNumberOfFilledNames = function() {
@@ -142,7 +145,6 @@
         if (totalNumberOfFilledNames === 2){
           $(".checkboxes-area").removeClass( "hidden" )
           $(".name-warning").addClass( "hidden" )
-
         }
       }
       $names.on('change', getNumberOfFilledNames);
@@ -154,23 +156,22 @@
       var $checked = 0;
       $checkboxes.on('change', function(e){
         if ($(this).is(':checked')) {
-          $checked += 1
-          var fName = $('.user-name').first().val().toUpperCase().charAt(0);
-          var mName = $('.user-middle-name').val().toUpperCase().charAt(0);
-          var lName = $('.user-name').last().val().toUpperCase().charAt(0);
-          var initials = ""
-          if (mName.length) {
-            initials = fName + "." + mName + "." + lName + ".";
-            $(this).replaceWith(initials);
-          } else {
-            initials = fName + "." + lName + ".";
-            $(this).replaceWith(initials);
-          }
+          $checked += 1;
+          addInitials($(this));
         }
         checkedIsEqualToNumber($checked, $number);
       });
     };
 
+    function addInitials(obj){
+      if (mName.length) {
+        initials = fName.toUpperCase().charAt(0) + "." + mName.toUpperCase().charAt(0) + "." + lName.toUpperCase().charAt(0) + ".";
+        obj.replaceWith(initials);
+      } else {
+        initials = fName + "." + lName + ".";
+        obj.replaceWith(initials);
+      }
+    }
     function checkedIsEqualToNumber(checked, number) {
       if (checked === number) {
         $('#signature').removeClass( "hidden" );
