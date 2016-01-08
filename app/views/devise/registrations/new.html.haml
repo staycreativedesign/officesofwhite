@@ -112,6 +112,8 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
+  .name-warning
+    %p Please enter your First and Last name to proceed
   .checkboxes-area.hidden
     .field
       = label_tag do
@@ -130,24 +132,21 @@
 :javascript
   $(function(){
 
-    function checkedIsEqualToNumber(checked, number) {
-      if (checked === number) {
-        $('#signature').removeClass( "hidden" )
-      } else {
-        $('#signature').addClass( "hidden" )
-      }
-    };
     function getFilledNamesCount() {
       var $names = $(".user-name");
       var getNumberOfFilledNames = function() {
         var totalNumberOfFilledNames = $names.filter(function(){
           return $(this).val().trim().length;
         }).length;
-        console.log(totalNumberOfFilledNames);
+        if (totalNumberOfFilledNames === 2){
+          $(".checkboxes-area").removeClass( "hidden" )
+        } else {
+
+        }
       }
       $names.on('change', getNumberOfFilledNames);
-
     };
+
     function checkBoxChange(){
       var $checkboxes = $("input[type='checkbox']");
       var $number = $checkboxes.length;
@@ -160,6 +159,14 @@
         }
         checkedIsEqualToNumber($checked, $number);
       });
+    };
+
+    function checkedIsEqualToNumber(checked, number) {
+      if (checked === number) {
+        $('#signature').removeClass( "hidden" )
+      } else {
+        $('#signature').addClass( "hidden" )
+      }
     };
   checkBoxChange();
   getFilledNamesCount();
