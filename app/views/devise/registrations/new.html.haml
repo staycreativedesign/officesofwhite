@@ -129,6 +129,7 @@
         The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
     #signature.field.hidden
       %p Welcome please sign
+      %p.full-name
 :javascript
   $(function(){
 
@@ -140,7 +141,7 @@
         }).length;
         if (totalNumberOfFilledNames === 2){
           $(".checkboxes-area").removeClass( "hidden" )
-        } else {
+          $(".name-warning").addClass( "hidden" )
 
         }
       }
@@ -154,8 +155,17 @@
       $checkboxes.on('change', function(e){
         if ($(this).is(':checked')) {
           $checked += 1
-        } else {
-          $checked -= 1
+          var fName = $('.user-name').first().val().toUpperCase().charAt(0);
+          var mName = $('.user-middle-name').val().toUpperCase().charAt(0);
+          var lName = $('.user-name').last().val().toUpperCase().charAt(0);
+          var initials = ""
+          if (mName.length) {
+            initials = fName + "." + mName + "." + lName + ".";
+            $(this).replaceWith(initials);
+          } else {
+            initials = fName + "." + lName + ".";
+            $(this).replaceWith(initials);
+          }
         }
         checkedIsEqualToNumber($checked, $number);
       });
@@ -163,11 +173,12 @@
 
     function checkedIsEqualToNumber(checked, number) {
       if (checked === number) {
-        $('#signature').removeClass( "hidden" )
+        $('#signature').removeClass( "hidden" );
       } else {
-        $('#signature').addClass( "hidden" )
+        $('#signature').addClass( "hidden" );
       }
     };
-  checkBoxChange();
-  getFilledNamesCount();
+
+    checkBoxChange();
+    getFilledNamesCount();
   });
