@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-    @header = "index-bg"
+    @header = "bg-index"
   end
 
 
