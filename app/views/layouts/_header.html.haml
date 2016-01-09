@@ -1,4 +1,4 @@
-.section.header{:class => location}
+.section.header{:class => @header}
   .container
     .row
       .col-sm-8.col-md-8
@@ -7,10 +7,11 @@
         = link_to "800-632-WHITE529", "tel:800-63294483529", class: "pull-right mont bold"
 
     = render partial: "layouts/navigation"
-    .row
-      .col-sm-12.col-centered.rotate
-        %h2.text-center.text-shadow.white
-          %strong#fade-1
-            Every two seconds another American becomes a victim of identity fraud.
-          %strong#fade-2
-            We specialize in helping victims of identity theft and have over 25+ years of knowledge and experience.
+    - if params[:controller] == "pages" && params[:action] == "index"
+      .row
+        .col-sm-12.col-centered.rotate
+          %h2.text-center.text-shadow.white
+            %strong#fade-1
+              Every two seconds another American becomes a victim of identity fraud.
+            %strong#fade-2
+              We specialize in helping victims of identity theft and have over 25+ years of knowledge and experience.
