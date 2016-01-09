@@ -1,6 +1,9 @@
+$phone-width: 550px
 $tablet-width: 768px
 $desktop-width: 992px
 $lg-desktop-width: 1200px
+=phone
+  @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px})
 =tablet
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})
     @content
