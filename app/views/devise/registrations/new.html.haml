@@ -33,14 +33,14 @@
         = f.text_field :last_name, class: "user-name"
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
-        = f.label "Primary Phone Number"
+        = f.label "Primary Phone"
       .col-xs-7.col-sm-6.col-md-7.pull-right
         = f.text_field :phone_number_1, class: 'number', size: 4, maxlength: 3
         = f.text_field :phone_number_2, class: 'number', size: 4, maxlength: 3
         = f.text_field :phone_number_3, class: 'number', size: 5, maxlength: 4
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
-        = f.label "Other Phone Number"
+        = f.label "Other Phone"
       .col-xs-7.col-sm-6.col-md-7.pull-right
         =f.text_field :other_phone_number_1, class: 'number', size: 4, maxlength: 3
         =f.text_field :other_phone_number_2, class: 'number', size: 4, maxlength: 3
@@ -59,7 +59,7 @@
         = f.text_field :ss_3, class: 'ssn', size: 5, maxlength: 4
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
-        = f.label "Your Dath of Birth:"
+        = f.label "Dath of Birth"
       .col-xs-7.col-sm-6.col-md-7.pull-right
         = f.date_select(:dob, date_of_birth_options)
   .seperator
@@ -83,7 +83,7 @@
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
         = f.label :zipcode
       .col-xs-7.col-sm-6.col-md-7.pull-right
-        = f.text_field :zipcode
+        = f.text_field :zipcode, maxlength: 5, size: 20
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
         = f.label :time_at_address_months, "Months at current residence"
@@ -139,7 +139,7 @@
         = f.text_field :employment_zipcode, size: 20, maxlength: 5
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
-        = f.label "Employer Phone Number"
+        = f.label "Employer Phone"
       .col-xs-7.col-sm-6.col-md-7.pull-right
         = f.text_field :employment_phone_1, class: 'number', size: 4, maxlength: 3
         = f.text_field :employment_phone_2, class: 'number', size: 4, maxlength: 3
@@ -241,6 +241,9 @@
             \&nbsp;
             = request.remote_ip
             \- Please be aware that your IP address has been attached to your file.
+      .row
+        .col-sm-12
+          = f.submit "Submit Information", class: "form-control btn btn-primary text-uppercase"
   :javascript
     $(function(){
       function userFormValues() {
