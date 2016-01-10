@@ -208,26 +208,40 @@
         = f.text_field :referred_by
   .row
     .col-md-12
-      %p.bg-warning.name-warning.text-center
+      .well.name-warning.text-center
         Please enter your First and Last name to proceed
   .checkboxes-area.hidden.checkbox-fix
     .row
       .col-md-12
-        .field
-          = label_tag do
-            = check_box_tag('correct_information', '1')
-            I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
-        .field
-          = label_tag do
-            = check_box_tag('accept_statement', '1')
-            I understand that it is a federal crime to obtain personal credit information for someone other than myself.
-        .field
-          = label_tag do
-            = check_box_tag('final_statement', '1')
-            The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
-    #signature.field.hidden
-      %p.full-name
-:javascript
+        .well
+          The Offices of White and Associates is not a credit restoration service. We specialize in victims of identity theft in regards to false and inaccurate information that appears on a credit file. The Offices of White and Associates does not condone disputing accurate information on a credit report. It is a federal crime to make any false or fraudulent statement or representation to the government. By clicking submit not only are you certifying that you are a victim of identity theft, but you are also certifying that you are mentally alert and competent, fully informed, and was not subjected to undue influence or coercion.
+    .row
+      .col-md-12
+        = label_tag do
+          = check_box_tag('correct_information', '1')
+          I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
+    .row
+      .col-md-12
+        = label_tag do
+          = check_box_tag('accept_statement', '1')
+          I understand that it is a federal crime to obtain personal credit information for someone other than myself.
+    .row
+      .col-md-12
+        = label_tag do
+          = check_box_tag('final_statement', '1')
+          The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
+    #signature.row.hidden
+      .col-sm-2.col-md-1
+        %strong Signature
+      .col-sm-4.col-md-4
+        %p.full-name
+      .row
+        .col-sm-10.col-sm-offset-2.col-md-10.col-md-offset-1
+          %p
+            \&nbsp;
+            = request.remote_ip
+            \- Please be aware that your IP address has been attached to your file.
+  :javascript
     $(function(){
       function userFormValues() {
         return {
