@@ -8,7 +8,7 @@ module UsersHelper
 
   def date_of_birth_options
     {
-    start_year: 1901, end_year: 2010, order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }
+    start_year: 1901, end_year: 2010, order: [:month, :day, :year], prompt: { day: ' Day', month: 'Month', year: 'Year' }
     }
   end
   def states_abbr
@@ -16,12 +16,12 @@ module UsersHelper
   end
 
   def time_at_address(number)
-    array = Array.new
+    array = []
     array << 0
     1.upto(number) { |n| array << n }
     array
   end
   def residence_type
-    array = ["Rent", "Own", "Other"]
+    ["Rent", "Own", "Other"]
   end
 end
