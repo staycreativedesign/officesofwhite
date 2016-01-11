@@ -259,8 +259,10 @@
       }
       function getFilledNamesCount() {
         var $names = $("input");
+        var $inputs = $("input[type='checkbox']")
+        var totalNumberOfFilledNames = 0
         var getNumberOfFilledNames = function() {
-          var totalNumberOfFilledNames = $names.filter(function(){
+           totalNumberOfFilledNames = $names.filter(function(){
             return $(this).val().trim().length;
           }).length;
           if (totalNumberOfFilledNames === $names.length){
@@ -268,8 +270,18 @@
             $(".name-warning").addClass( "hidden" )
           }
         }
+        checkForm();
         $names.on('change', getNumberOfFilledNames);
       };
+
+      function checkForm(){
+        $("form").on('submit', function(e){
+          if (totalNumberOfFilledNames === $names.length) {
+            } else {
+              e.preventDefault();
+            }
+          });
+        };
 
       function checkBoxChange(){
         var $checkboxes = $("input[type='checkbox']");
