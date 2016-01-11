@@ -3,7 +3,7 @@ gem 'devise'
 gem 'letter_opener', group: :development
 gem 'erb2haml', group: :development
 gem 'font-awesome-rails'
-
+gem 'selenium-webdriver'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
