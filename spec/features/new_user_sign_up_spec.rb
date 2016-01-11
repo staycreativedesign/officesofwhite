@@ -1,22 +1,24 @@
 require 'rails_helper'
 
 feature 'New user sign up' do
-  before(:all) do
-    visit(new_user_registration_path)
-  end
-  scenario "+valid - User fills out Personal Information" do
+  scenario "+valid - User fills out Personal Information", js: true do
+    visit new_user_registration_path
     fill_in_personal_information
     fill_in_residence_information
     fill_in_employment_information
     fill_in_credit_information
     fill_in_mother_information
+    fill_in_login_information
     fill_in_referral_information
     check_check_boxes
+    click_button "Submit Information"
+    expect(page).to have_css('.rotate')
   end
   def check_check_boxes
-    check('correct_information')
-    check('accept_statement')
-    check('final_statement')
+    find(".name-warning").click
+    find(:css, "#correct_information").click
+    find(:css, "#accept_statement").click
+    find(:css, "#final_statement").click
   end
   def fill_in_phone_number(element_name,number=["555","444","1234"])
     fill_in("user_#{element_name}_1", with: number[0])
@@ -45,7 +47,7 @@ feature 'New user sign up' do
     fill_in('user_employment_address', with: 'Text')
     fill_in('user_employment_city', with: 'Text')
     select('FL', from: 'user_employment_state')
-    fill_in('user_employment_zipcode', with: 'Text')
+    fill_in('user_employment_zipcode', with: 74133)
     fill_in_phone_number('employment_phone')
     fill_in('user_employment_gross_income', with: '5000')
     select('2', from: 'user_employment_years')
@@ -73,5 +75,11 @@ feature 'New user sign up' do
     fill_in('user_ss_2', with: 41)
     fill_in('user_ss_3', with: 5333)
     fill_in_dob("user_dob")
+  end
+
+  def fill_in_login_information
+    fill_in('user_email', with: Faker::Internet.email)
+    fill_in('user_password', with: "brasileiro1")
+    fill_in('user_password_confirmation', with: "brasileiro1")
   end
 end
