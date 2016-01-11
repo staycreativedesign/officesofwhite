@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_validation :set_phone_numbers_and_ssn
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
                 :other_phone_number_1, :other_phone_number_2,
                 :other_phone_number_3, :ss_1, :ss_2, :ss_3, :employment_phone_1, :employment_phone_2, :employment_phone_3
@@ -32,6 +33,17 @@ class User < ActiveRecord::Base
   validates_presence_of :employment_gross_income
   validates_presence_of :employment_years
   validates_presence_of :employment_months
+
+  def set_phone_numbers_and_ssn
+    self.phone_number = join_numbers(phone_number_1, phone_number_2, phone_number_3)
+    self.other_number = join_numbers(other_phone_number_1, other_phone_number_2, other_phone_number_3)
+    self.employment_phone = join_numbers(employment_phone_1, employment_phone_2, employment_phone_3)
+    self.social_security = join_numbers(ss_1, ss_2, ss_3)
+  end
+
+  def join_numbers( num1, num2, num3)
+    "#{num1}-#{num2}-#{num3}"
+  end
 
 end
 
