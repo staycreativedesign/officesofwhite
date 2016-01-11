@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228200515) do
+ActiveRecord::Schema.define(version: 20160111025305) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "", null: false
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20151228200515) do
     t.string   "last_name"
     t.string   "suffix"
     t.string   "middle_name"
-    t.integer  "phone_number"
-    t.integer  "other_number"
+    t.string   "phone_number"
+    t.string   "other_number"
     t.string   "driver_license"
-    t.integer  "social_security"
+    t.string   "social_security"
     t.date     "dob"
     t.string   "registration_ip"
     t.string   "home_address"
