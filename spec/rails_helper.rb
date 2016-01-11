@@ -5,7 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-require 'capybara/poltergeist'
+#require 'capybara/poltergeist'
 require 'devise'
 Capybara.default_driver = :selenium
 # Requires supporting ruby files with custom matchers and macros, etc, in
