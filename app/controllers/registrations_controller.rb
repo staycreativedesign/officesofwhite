@@ -5,8 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
     @header = "bg-registration"
     super
   end
-
   def create
+    @header = "bg-registration"
     super
   end
 
