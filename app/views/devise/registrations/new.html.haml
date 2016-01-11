@@ -1,5 +1,9 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+  = hidden_field_tag '[user]registration_ip', request.remote_ip
+
+  .row
+    .col-md-12
+      = devise_error_messages!
   .seperator
     .row
       .col-md-12
@@ -78,7 +82,7 @@
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
         = f.label :state
       .col-xs-7.col-sm-6.col-md-7.pull-right
-        = f.select :state, states_abbr
+        = f.select :state, states_abbr, prompt: "Select State"
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
         = f.label :zipcode
@@ -126,7 +130,7 @@
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
         = f.label :employment_state
       .col-xs-7.col-sm-6.col-md-7.pull-right
-        = f.select :employment_state, states_abbr
+        = f.select :employment_state, states_abbr, prompt: "Select State"
     .row
       .col-xs-5.col-sm-6.col-md-5.pull-left.text-right.form-group
         = f.label :employment_city
@@ -209,7 +213,7 @@
   .row
     .col-md-12
       .well.name-warning.text-center
-        Please enter your First and Last name to proceed
+        Please fill out all fields to proceed.
   .checkboxes-area.hidden.checkbox-fix
     .row
       .col-md-12
@@ -254,12 +258,12 @@
         }
       }
       function getFilledNamesCount() {
-        var $names = $(".user-name");
+        var $names = $("input");
         var getNumberOfFilledNames = function() {
           var totalNumberOfFilledNames = $names.filter(function(){
             return $(this).val().trim().length;
           }).length;
-          if (totalNumberOfFilledNames === 2){
+          if (totalNumberOfFilledNames === $names.length){
             $(".checkboxes-area").removeClass( "hidden" )
             $(".name-warning").addClass( "hidden" )
           }
@@ -300,9 +304,13 @@
 
         } else {
           $('#signature').addClass( "hidden" );
-        }
+        };
       };
 
+      function submitOk(){
+      var inputs = $("form#new_user")
+      console.log(inputs.length)
+      }
       checkBoxChange();
       getFilledNamesCount();
     });
