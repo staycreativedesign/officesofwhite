@@ -2,7 +2,9 @@ module UsersHelper
   def suffix_options
    [
      ['Mr.','mr.'],
-     ['Mrs.','mrs.']
+     ['Mrs.','mrs.'],
+     ['Ms.', 'ms'],
+     ['Dr.', 'dr']
    ]
   end
 
