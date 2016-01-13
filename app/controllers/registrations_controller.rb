@@ -14,4 +14,9 @@ class RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit! }
   end
 
+  protected
+
+  def after_sign_up_path_for(resource)
+    waiting_for_approval_path
+  end
 end
