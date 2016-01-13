@@ -12,7 +12,7 @@ feature 'New user sign up' do
     fill_in_referral_information
     check_check_boxes
     click_button "Submit Information"
-    expect(page).to have_css('.rotate')
+    expect(page).to have_content("Your request has been sent. Please log out, and wait for an email to be sent to you with further instructions. Thank you")
   end
   def check_check_boxes
     find(".name-warning").click
