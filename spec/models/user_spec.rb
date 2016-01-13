@@ -27,4 +27,5 @@ describe User do
   it { should validate_presence_of(:employment_gross_income) }
   it { should validate_presence_of(:employment_years) }
   it { should validate_presence_of(:employment_months) }
+  it { should have_many(:step_ones) }
 end
