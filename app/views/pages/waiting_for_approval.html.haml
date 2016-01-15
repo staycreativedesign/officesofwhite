@@ -1,0 +1,61 @@
+.container{:class => params[:action]}
+  .row
+    .col-md-12.text-center
+      %h2
+        Your request has been sent. Please log out, and wait for an email to be sent to you with further instructions. Thank you
+      %h3
+        = link_to "Logout", destroy_user_session_path, method: :delete
+  .row
+    .col-sm-6
+      %h3
+        Office of White &amp; Associates
+      %p
+        %u Florida
+        %br/
+        290 NW 165th Street #P100
+        %br/
+        Miami, FL 33169
+        %br/
+        = link_to "Click for Directions", "https://gg.gl/maps/FfSPv", target: "_blank"
+      %p
+        %u New York
+        %br/
+        151 Broadway
+        %br/
+        Hawthorne, NY 10532
+        %br/
+        = link_to "Click for Directions", "https://goo.gl/maps0vVCn", target: "_blank"
+      %p
+        %u Texas
+        %br/
+        6666 Harwin Suite 220
+        %br/
+        Houston, TX 77026
+        %br/
+        = link_to "Click for Directions", "https://goo.gl/maps/cS2rg", target: "_blank"
+      %strong Office:
+      = link_to "(480)-999-4483", "tel:(480)-999-4483"
+      %br
+      %strong Toll Free:
+      = link_to "(800)-632-9448", "tel:(888)-632-9448"
+      %br
+      %strong Fax:
+      (210)-319-4483
+      %br
+      %strong Email
+      = link_to "info@whitecreditlaw.com", "info@whitecreditlaw.com"
+    .col-sm-6
+      %h3.text-center
+        Contact Form
+      = form_tag('/contact')
+      .form-group
+        %label Name
+        = text_field_tag("hello", nil, class: "form-control")
+      .form-group
+        %label Email
+        = text_field_tag("email", nil, class: "form-control")
+      .form-group
+        %label Message
+        = text_area_tag("message", nil, class: "form-control", rows: 10)
+      .form-group
+        = submit_tag("Send Message", class: "form-control")
