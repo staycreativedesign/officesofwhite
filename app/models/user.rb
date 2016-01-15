@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :first_step
   before_validation :set_phone_numbers_and_ssn
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
                 :other_phone_number_1, :other_phone_number_2,
@@ -33,6 +34,8 @@ class User < ActiveRecord::Base
   validates_presence_of :employment_gross_income
   validates_presence_of :employment_years
   validates_presence_of :employment_months
+  validates_presence_of :approved
+  validates_presence_of :admin
 
   def set_phone_numbers_and_ssn
     self.phone_number = join_numbers(phone_number_1, phone_number_2, phone_number_3)
