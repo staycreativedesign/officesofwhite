@@ -4,9 +4,11 @@ gem 'letter_opener', group: :development
 gem 'erb2haml', group: :development
 gem 'font-awesome-rails'
 gem 'selenium-webdriver'
-
+gem 'carrierwave'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
+gem 'rack_session_access'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
