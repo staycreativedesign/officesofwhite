@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111025305) do
+ActiveRecord::Schema.define(version: 20160113224537) do
+
+  create_table "first_steps", force: :cascade do |t|
+    t.string   "letter_of_presentation"
+    t.string   "payment_proof"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "", null: false
@@ -41,8 +49,8 @@ ActiveRecord::Schema.define(version: 20160111025305) do
     t.integer  "zipcode"
     t.string   "time_at_address_months"
     t.string   "time_at_address_years"
-    t.string   "household_payment"
     t.string   "residence_type"
+    t.string   "household_payment"
     t.string   "state"
     t.string   "employer_name"
     t.string   "occupation"
