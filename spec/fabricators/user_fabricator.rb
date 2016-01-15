@@ -1,0 +1,46 @@
+Fabricator(:user) do
+  suffix { "Mr." }
+  first_name { Faker::Name.first_name }
+  middle_name { Faker::Name.last_name }
+  last_name { Faker::Name.last_name }
+  phone_number_1 { Faker::Number.number(3) }
+  phone_number_2 { Faker::Number.number(3) }
+  phone_number_3 { Faker::Number.number(4) }
+  other_phone_number_1 { Faker::Number.number(3) }
+  other_phone_number_2 { Faker::Number.number(3) }
+  other_phone_number_3 { Faker::Number.number(4) }
+  driver_license { Faker::Number.number(11) }
+  ss_1 { Faker::Number.number(3) }
+  ss_2 { Faker::Number.number(2) }
+  ss_3 { Faker::Number.number(3) }
+  dob { Date.new(2001,2,3) }
+  home_address { Faker::Address.street_address }
+  city { Faker::Address.city }
+  state { Faker::Address.state_abbr }
+  zipcode { Faker::Address.zip }
+  time_at_address_months { "1" }
+  time_at_address_years { "3" }
+  residence_type { "Rent" }
+  household_payment { "5000.00" }
+  employer_name { Faker::Company.name }
+  occupation { Faker::Company.name}
+  employment_address { Faker::Company.name }
+  employment_state { Faker::Address.state_abbr }
+  employment_city { Faker::Address.city }
+  employment_zipcode { Faker::Address.zip }
+  employment_phone_1 { Faker::Number.number(3) }
+  employment_phone_2 { Faker::Number.number(3) }
+  employment_phone_3 { Faker::Number.number(4) }
+  employment_months { "1" }
+  employment_years { "4" }
+  employment_gross_income { "4500.00" }
+  credit_login { Faker::Internet.email }
+  credit_password { Faker::Internet.password }
+  credit_security_answer { Faker::Company.name }
+  credit_mother_dob { Date.new(2001,2,3) }
+  email { Faker::Internet.email }
+  password { "thisisamazing1" }
+  password_confirmation { "thisisamazing1" }
+  referred_by { Faker::Name.name }
+  registration_ip { "192.168.0.1" }
+end
