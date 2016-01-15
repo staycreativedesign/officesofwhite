@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#index'
   get 'waiting-for-approval' => 'pages#waiting_for_approval', as: "waiting_for_approval"
+  resources :users do
+    resources :first_steps, only: [:new, :create], path: "step-one"
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
