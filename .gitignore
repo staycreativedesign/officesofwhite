@@ -20,3 +20,6 @@
 /tmp/*
 tmp/*
 *.cache
+
+# Ignore application configuration
+/config/application.yml

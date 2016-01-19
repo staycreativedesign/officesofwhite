@@ -5,6 +5,7 @@ gem 'erb2haml', group: :development
 gem 'font-awesome-rails'
 gem 'selenium-webdriver'
 gem 'carrierwave'
+gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 gem 'rack_session_access'
