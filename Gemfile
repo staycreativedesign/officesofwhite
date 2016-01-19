@@ -6,9 +6,8 @@ gem 'font-awesome-rails'
 gem 'selenium-webdriver'
 gem 'carrierwave'
 gem 'figaro'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'sidekiq'
 gem 'rails', '4.2.3'
-gem 'rack_session_access'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
