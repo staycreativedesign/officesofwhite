@@ -8,6 +8,7 @@ gem 'carrierwave'
 gem 'figaro'
 gem 'sidekiq'
 gem 'rails', '4.2.3'
+gem 'database_cleaner'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
