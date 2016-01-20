@@ -222,18 +222,18 @@
     .row
       .col-md-12
         = label_tag do
-          = check_box_tag('correct_information', '1')
+          = check_box_tag("correct_information", "1")
           I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
     .row
       .col-md-12
         = label_tag do
-          = check_box_tag('accept_statement', '1')
+          = check_box_tag("accept_statement", "1")
           I understand that it is a federal crime to obtain personal credit information for someone other than myself.
     .row
       .col-md-12
         = label_tag do
-          = check_box_tag('final_statement', '1')
-          The Offices of White and Associates is not responsible for any misrepresentations and/or false statements or documentation.
+          = check_box_tag("final_statement", "1")
+          The Offices of White and Associates is not responsible for any misrepresentations and or false statements or documentation.
     #signature.row.hidden
       .col-sm-2.col-md-1
         %strong Signature
@@ -247,7 +247,7 @@
             \- Please be aware that your IP address has been attached to your file.
       .row
         .col-sm-12
-          = f.submit "Submit Information", class: "form-control btn btn-primary text-uppercase"
+          = f.submit "SUBMIT INFORMATION", class: "submit-button form-control btn btn-primary text-uppercase", id: "submit"
   :javascript
     $(function(){
       function userFormValues() {
