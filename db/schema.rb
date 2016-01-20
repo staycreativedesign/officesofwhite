@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160115200636) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "",    null: false
-    t.string   "encrypted_password",      default: "",    null: false
+    t.string   "password_digest"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160115200636) do
     t.string   "credit_security_answer"
     t.date     "credit_mother_dob"
     t.string   "referred_by"
-    t.boolean  "approved",                default: true
+    t.boolean  "approved",                default: false
     t.boolean  "admin",                   default: false
   end
 

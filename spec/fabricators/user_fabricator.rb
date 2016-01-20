@@ -42,5 +42,7 @@ Fabricator(:user) do
   password { "thisisamazing1" }
   password_confirmation { "thisisamazing1" }
   referred_by { Faker::Name.name }
+  admin { false }
+  approved { false }
   registration_ip { "192.168.0.1" }
 end

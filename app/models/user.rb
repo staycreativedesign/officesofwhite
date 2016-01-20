@@ -1,13 +1,10 @@
 class User < ActiveRecord::Base
-  has_one :first_step
+  has_secure_password
+  has_many :documents
   before_validation :set_phone_numbers_and_ssn
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
                 :other_phone_number_1, :other_phone_number_2,
                 :other_phone_number_3, :ss_1, :ss_2, :ss_3, :employment_phone_1, :employment_phone_2, :employment_phone_3
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :suffix
@@ -34,8 +31,8 @@ class User < ActiveRecord::Base
   validates_presence_of :employment_gross_income
   validates_presence_of :employment_years
   validates_presence_of :employment_months
-  validates_presence_of :approved
-  validates_presence_of :admin
+  validates :approved, inclusion: { in: [true, false] }
+  validates :admin, inclusion: { in: [true, false]  }
 
   def set_phone_numbers_and_ssn
     self.phone_number = join_numbers(phone_number_1, phone_number_2, phone_number_3)
@@ -47,6 +44,5 @@ class User < ActiveRecord::Base
   def join_numbers( num1, num2, num3)
     "#{num1}#{num2}#{num3}"
   end
-
 end
 
