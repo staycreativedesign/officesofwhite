@@ -6,8 +6,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/poltergeist'
-require 'devise'
-require "rack_session_access/capybara"
 Capybara.default_driver = :selenium
 # Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -38,11 +36,9 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   config.infer_spec_type_from_file_location!  # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
 
-  config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
