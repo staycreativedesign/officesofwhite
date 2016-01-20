@@ -8,12 +8,13 @@ class UsersController < ApplicationController
     @header = "bg-registration"
     @user = User.new(user_params)
     if @user.save
-      NotificationsMailer.new_user_registration(@user).deliver
+      NotificationsMailer.delay.new_user_registration(@user.id)
       redirect_to waiting_for_approval_path
     else
       render :new
     end
   end
+
   private
 
   def user_params

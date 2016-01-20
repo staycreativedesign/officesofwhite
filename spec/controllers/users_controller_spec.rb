@@ -10,11 +10,12 @@ RSpec.describe UsersController, type: :controller do
         expect(User.count).to equal(1)
       end
       it "sends an email" do
-        expect(ActionMailer::Base.deliveries).to_not be_empty
+        expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(2)
       end
     end
     context "user does not fill out form correctly" do
       before do
+        Sidekiq::Extensions::DelayedMailer.jobs.clear
         post :create, user: Fabricate.attributes_for(:user, first_name: nil)
       end
       it "does not create user" do
@@ -22,6 +23,9 @@ RSpec.describe UsersController, type: :controller do
       end
       it "redirects to new" do
         expect(response).to render_template(:new)
+      end
+      it "does not send email" do
+        expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(0)
       end
     end
   end
