@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   validates :admin, inclusion: { in: [true, false]  }
 
   def set_phone_numbers_and_ssn
+    #definitely refactor this to be a lot less ugly
     self.phone_number = join_numbers(phone_number_1, phone_number_2, phone_number_3)
     self.other_number = join_numbers(other_phone_number_1, other_phone_number_2, other_phone_number_3)
     self.employment_phone = join_numbers(employment_phone_1, employment_phone_2, employment_phone_3)
