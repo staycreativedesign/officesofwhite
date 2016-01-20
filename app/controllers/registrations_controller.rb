@@ -8,8 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @header = "bg-registration"
     super
-    NotificationsMailer.new_user_registration(@user).deliver
-
+    NotificationsMailer.new_user_registration(resource).deliver unless resource.invalid?
   end
 
   def configure_permitted_parameters
