@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def join_numbers( num1, num2, num3)
-    "#{num1}#{num2}#{num3}"
+    num1 + " - " +  num2 + " - " + num3
   end
 end
 
