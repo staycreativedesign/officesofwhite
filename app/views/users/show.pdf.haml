@@ -1,0 +1,23 @@
+%h3.text-center
+  Registration Information
+%p
+  %strong
+    First Name:
+  = @user.first_name
+
+%p
+  - if @user.middle_name.present?
+    %strong
+      Middle Name:
+    = @user.middle_name
+%p
+  %strong
+    Last Name:
+  = @user.last_name
+
+%p
+  %strong
+    Phone Number:
+  = @user.phone_number
+
+
