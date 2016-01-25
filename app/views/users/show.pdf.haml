@@ -122,4 +122,95 @@
         = precede '$' do
           = succeed '.00' do
             = @user.employment_gross_income
+    %tr
+      %td
+        %strong
+          Employed for years:
+        = @user.employment_years
+      %td
+        %strong
+          Employed for months:
+        = @user.employment_months
+  %table
+    %h3 Credit Monitoring Sevice Information
+    %tr
+      %td
+        %strong
+          Login:
+        = @user.credit_login
+    %tr
+      %td
+        %strong
+          Password:
+        = @user.credit_password
+    %tr
+      %td
+        %strong
+          Security Answer:
+        = @user.credit_security_answer
+    %tr
+      %td{:colspan => "3"}
+        %strong
+          Mother's DOB:
+        = @user.credit_mother_dob
+    %tr
+      %td{:colspan => "3"}
+        %strong
+          Referred by:
+        = @user.referred_by
+%p{:style => "page-break-after:always;"}
+%h3.margin-fix
+%h3
+  Put some header text around here
+%p
+  The Offices of White and Associates is not a credit restoration service. We specialize in victims of identity theft in regards to false and inaccurate information that appears on a credit file. The Offices of White and Associates does not condone disputing accurate information on a credit report. It is a federal crime to make any false or fraudulent statement or representation to the government. By clicking submit not only are you certifying that you are a victim of identity theft, but you are also certifying that you are mentally alert and competent, fully informed, and was not subjected to undue influence or coercion.
+%p.initials-area
+  %strong
+    = initials
+%p.sign-area
+  I have read and acknowledge the statement above.
+%div.clear
+%p.initials-area
+  %strong
+    = initials
+%p.sign-area
+  I have read and accept the terms and conditions.
+%div.clear
+%p.initials-area
+  %strong
+    = initials
+%p.sign-area
+  I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
+%div.clear
+%p.initials-area
+  %strong
+    = initials
+%p.sign-area
+  I understand that it is a federal crime to obtain personal credit information for someone other than myself.
+%div.clear
+%p.initials-area
+  %strong
+    = initials
+%p.sign-area
+  The Offices of White and Associates is not responsible for any misrepresentations and or false statements or documentation.
+%div.clear
+%p.initials-area
+  %strong
+    Signature
+%p.sa-fix
+  = @user.first_name
+  = @user.try(:middle_name)
+  = @user.last_name
+%div.clear
+%p.initials-area
+  %strong
+    = @user.registration_ip
+%p.sign-area
+  Please be aware that your IP address has been attached to your file
+%div.clear
+%p.initials-area
+  %strong
+    Date
+%p.sign-area
+  = Date.today.strftime('%D')
 

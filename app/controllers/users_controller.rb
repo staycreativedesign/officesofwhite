@@ -15,6 +15,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: '#{@user.id}',
+               layout: 'layouts/submission.pdf.haml',
+               show_as_html: params[:debug].present?
+      end
+    end
+  end
+
   private
 
   def user_params
