@@ -46,7 +46,6 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'fabrication'
-  gem 'faker'
 end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
