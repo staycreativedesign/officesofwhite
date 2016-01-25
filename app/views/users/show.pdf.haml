@@ -1,23 +1,125 @@
 %h3.text-center
   Registration Information
-%p
-  %strong
-    First Name:
-  = @user.first_name
-
-%p
-  - if @user.middle_name.present?
-    %strong
-      Middle Name:
-    = @user.middle_name
-%p
-  %strong
-    Last Name:
-  = @user.last_name
-
-%p
-  %strong
-    Phone Number:
-  = @user.phone_number
-
+.CSSTableGenerator
+  %h3
+    Personal Information
+  %table
+    %tr
+      %td
+        %strong
+          Name:
+        = @user.suffix
+        = @user.first_name
+        = @user.try(:middle_name)
+        = @user.last_name
+      %td
+        %strong
+          Email:
+        = @user.email
+      %td
+        %strong
+          DOB:
+        = @user.dob
+    %tr
+      %td
+        %strong
+          Primary Number:
+        = @user.phone_number
+      %td
+        %strong
+          SSN:
+        = @user.social_security
+      %td
+        %strong
+          DL:
+        = @user.driver_license
+    %tr
+      %td
+        %strong
+          Other Phone Number:
+        = @user.other_number
+  %h3
+    Residence Information
+  %table
+    %tr
+      %td
+        %strong
+          Address:
+        = @user.home_address
+    %tr
+      %td
+        %strong
+          City:
+        = @user.city
+      %td
+        %strong
+          State:
+        = @user.state
+      %td
+        %strong
+          Zipcode:
+        = @user.zipcode
+    %tr
+      %td
+        %strong
+          Time at address months:
+        = @user.time_at_address_months
+      %td
+        %strong
+          Time at address years:
+        = @user.time_at_address_years
+      %td
+        %strong
+          Residence type:
+        = @user.residence_type
+    %tr
+      %td
+        %strong
+          Household payment:
+        = @user.household_payment
+  %h3
+    Employment Information
+  %table
+    %tr
+      %td
+        %strong
+          Employer:
+        = @user.employer_name
+      %td
+        %strong
+          Occupation:
+        = @user.occupation
+    %tr
+      %td{:colspan => "3"}
+        %strong
+          Address:
+        = @user.employment_address
+    %tr
+      %td
+        %strong
+          City:
+        = @user.employment_city
+      %td
+        %strong
+          State:
+        = @user.employment_state
+      %td
+        %strong
+          Zipcode:
+        = @user.employment_zipcode
+      %td
+        %strong
+          State:
+        = @user.employment_state
+    %tr
+      %td
+        %strong
+          Primary Number:
+        = @user.employment_phone
+      %td
+        %strong
+          Gross Income:
+        = precede '$' do
+          = succeed '.00' do
+            = @user.employment_gross_income
 
