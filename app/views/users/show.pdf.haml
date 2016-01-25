@@ -166,31 +166,30 @@
   The Offices of White and Associates is not a credit restoration service. We specialize in victims of identity theft in regards to false and inaccurate information that appears on a credit file. The Offices of White and Associates does not condone disputing accurate information on a credit report. It is a federal crime to make any false or fraudulent statement or representation to the government. By clicking submit not only are you certifying that you are a victim of identity theft, but you are also certifying that you are mentally alert and competent, fully informed, and was not subjected to undue influence or coercion.
 %p.initials-area
   %strong
-    = initials
+    - if @user.middle_name.present?
+      =  @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
+    - else
+      = @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
 %p.sign-area
   I have read and acknowledge the statement above.
 %div.clear
 %p.initials-area
   %strong
-    = initials
 %p.sign-area
   I have read and accept the terms and conditions.
 %div.clear
 %p.initials-area
   %strong
-    = initials
 %p.sign-area
   I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
 %div.clear
 %p.initials-area
   %strong
-    = initials
 %p.sign-area
   I understand that it is a federal crime to obtain personal credit information for someone other than myself.
 %div.clear
 %p.initials-area
   %strong
-    = initials
 %p.sign-area
   The Offices of White and Associates is not responsible for any misrepresentations and or false statements or documentation.
 %div.clear
