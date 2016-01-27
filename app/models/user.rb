@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_validation :set_phone_numbers_and_ssn
   has_secure_password
   has_many :documents
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
