@@ -8,22 +8,10 @@ class UsersController < ApplicationController
     @header = "bg-registration"
     @user = User.new(user_params)
     if @user.save
-      NotificationsMailer.delay.new_user_registration(@user.id)
+      NotificationsMailer.new_user_registration(@user).deliver_now
       redirect_to waiting_for_approval_path
     else
       render :new
-    end
-  end
-
-  def show
-    @user = User.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: '#{@user.id}',
-               layout: 'layouts/submission.pdf.haml',
-               show_as_html: params[:debug].present?
-      end
     end
   end
 
