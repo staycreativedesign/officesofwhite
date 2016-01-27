@@ -26,12 +26,4 @@ module UsersHelper
   def residence_type
     ["Rent", "Own", "Other"]
   end
-
-  def initials
-    if @user.middle_name.present?
-      @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
-    else
-      @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
-    end
-  end
 end
