@@ -1,99 +1,12 @@
-@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
-  @font-face {
-  font-family: '#{$font-family}';
-    src: url(font-path('#{$font-filename}.eot'));
-    src: url(font-path('#{$font-filename}.eot?#iefix')) format('embedded-opentype'),
-    url(font-path('#{$font-filename}.woff')) format('woff'),
-    url(font-path('#{$font-filename}.ttf')) format('truetype'),
-    url(font-path('#{$font-filename}.svg##{$font-family}')) format('svg');
-    font-weight: $font-weight;
-    font-style: $font-style;
-    font-stretch: $font-stretch;
-  }
+div {
+  font-size: 10px;
+  width: 100%;
 }
-@include declare-font-face('mr_dehavilandregular', mr_dehaviland-webfont, 400);
-
 .text-center {
   text-align: center
   }
-  .clear {
-    clear: both;
-  }
-
-
-
-.CSSTableGenerator {
-margin: 0px;
-padding: 0px;
-width: 100%;
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 100%;
-	height: 100%;
-	margin: 0px;
-  font-size: 14px;
-	padding: 0px;
-}
-tr:last-child td:last-child {
-	-webkit-border-bottom-right-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
-table tr:first-child td {
-	&:first-child {
-		-moz-border-radius-topleft: 0px;
-		-webkit-border-top-left-radius: 0px;
-		border-top-left-radius: 0px;
-	}
-	&:last-child {
-		-moz-border-radius-topright: 0px;
-		-webkit-border-top-right-radius: 0px;
-		border-top-right-radius: 0px;
-	}
-}
-tr {
-}
-td {
-	vertical-align: middle;
-	text-align: left;
-	padding: 7px;
-	font-weight: normal;
-	color: #000000;
-}
-tr {
-	&:last-child td {
-		border-width: 0px 1px 0px 0px;
-	}
-	td:last-child {
-		border-width: 0px 0px 1px 0px;
-	}
-	&:last-child td:last-child {
-		border-width: 0px 0px 0px 0px;
-	}
-	&:first-child {
-		td {
-			font-size: 14px;
-			font-family: Arial;
-			color: #000000;
-		}
-		&:hover td {
-			background: -o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2));
-			background: -moz-linear-gradient(center top, #cccccc 5%, #b2b2b2 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");
-			background: -o-linear-gradient(top, #cccccc, b2b2b2);
-			background-color: #cccccc;
-		}
-		td {
-			&:first-child {
-				border-width: 0px 0px 1px 0px;
-			}
-			&:last-child {
-				border-width: 0px 0px 1px 1px;
-			}
-		}
-	}
-}
+.clear {
+  clear: both;
 }
 
 .initials-area {
@@ -104,10 +17,6 @@ tr {
 .sign-area {
   width: 70%;
   float:left;
-}
-
-.blue {
-  background-color: blue;
 }
 
 .margin-fix {
@@ -121,5 +30,11 @@ tr {
   font-family: 'mr_havilandregular', cursive;
   font-weight: 400;
   font-style: normal;
+  color: blue;
   font-stretch: normal;
+
 }
+
+.width-33 { float:left;width:33%; }
+.width-30 { float:left;width:30%; }
+.width-25 { float:left;width:25%; }
