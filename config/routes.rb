@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'waiting-for-approval' => 'pages#waiting_for_approval', as: "waiting_for_approval"
 
   get '/login', to: 'sessions#new'
-  post '/login', to: 'session#create'
+  post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
   resources :users
