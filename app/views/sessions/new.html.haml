@@ -8,21 +8,22 @@
           Please enter your email and password
     .row
       .col-md-12.line-box
-        %ul.list-unstyled.text-center
-          %li
-            = label_tag "Email:", nil, class: "text-left"
-            = text_field_tag "Email:"
-      .col-md-12.line-box
-        %ul.list-unstyled.text-center
-          %li
-            = label_tag "Password:", nil, class: "text-left"
-            = password_field_tag "Email:"
-    .row
-      .col-md-12
-        %ul.list-unstyled.list-inline.login
-          %li
-            = button_tag "Log in"
-          %li
-            = button_tag "Register New Account"
-          %li
-            = button_tag "Forgot Password?"
+        = form_tag '/login' do
+          %ul.list-unstyled.text-center
+            %li
+              = label_tag :email, "Email:", class: "text-left"
+              = text_field_tag :email
+          .col-md-12.line-box
+            %ul.list-unstyled.text-center
+              %li
+                = label_tag :password, "Password:", class: "text-left"
+                = password_field_tag :password
+          .row
+            .col-md-12
+              %ul.list-unstyled.list-inline.login
+                %li
+                  = submit_tag "Log in", class: "btn btn-default"
+                %li
+                  = button_tag "Register New Account", class: "btn btn-default"
+                %li
+                  = button_tag "Forgot Password?", class: "btn btn-default"
