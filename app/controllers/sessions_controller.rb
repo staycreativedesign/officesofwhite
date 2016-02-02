@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
+  before_action :set_image_header, only: [:create, :new]
   def new
-  @header = "bg-login"
   end
 
   def create
-    @header = "bg-login"
     user = User.where(email: params[:email]).first
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -18,8 +17,14 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "You have logged out"
     redirect_to root_path
+    flash[:notice] = "You have logged out"
+  end
+
+  private
+
+  def set_image_header
+    @header = "bg-login"
   end
 end
 
