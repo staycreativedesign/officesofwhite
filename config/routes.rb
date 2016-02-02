@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users do
+
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

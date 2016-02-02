@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :controller do
         expect(User.count).to equal(1)
       end
       it "sends an email" do
-       # expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(2)
+       expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(2)
       end
 
       it "formats the phone number" do
@@ -29,7 +29,7 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to render_template(:new)
       end
       it "does not send email" do
-       # expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(0)
+        expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(0)
       end
     end
   end

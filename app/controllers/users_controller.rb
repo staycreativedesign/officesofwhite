@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
+  before_action :header_image
   def new
-    @header = "bg-registration"
+    if current_user.present?
+      redirect_to root_path
+      flash[:notice] = "You already have an account"
+    end
     @user = User.new
   end
 
   def create
-    @header = "bg-registration"
     @user = User.new(user_params)
     if @user.save
-      NotificationsMailer.new_user_registration(@user).deliver_now
+      NotificationsMailer.delay.new_user_registration(@user)
       redirect_to waiting_for_approval_path
     else
       render :new
@@ -17,6 +20,9 @@ class UsersController < ApplicationController
 
   private
 
+  def header_image
+    @header = "bg-registration"
+  end
   def user_params
     params.require(:user).permit!
   end
