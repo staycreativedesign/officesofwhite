@@ -1,0 +1,29 @@
+.row.initial-margin
+  .out-line.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.border-box
+    .row
+      .col-md-12.border-bottom
+        %h3.header
+          Log in
+        %h4.tag
+          Please enter your email and password
+    .row
+      .col-md-12.line-box
+        = form_tag '/login' do
+          %ul.list-unstyled.text-center
+            %li
+              = label_tag :email, "Email:", class: "text-left"
+              = text_field_tag :email
+          .col-md-12.line-box
+            %ul.list-unstyled.text-center
+              %li
+                = label_tag :password, "Password:", class: "text-left"
+                = password_field_tag :password
+          .row
+            .col-md-12
+              %ul.list-unstyled.list-inline.login
+                %li
+                  = submit_tag "Log in", class: "btn btn-default"
+                %li
+                  = button_tag "Register New Account", class: "btn btn-default"
+                %li
+                  = button_tag "Forgot Password?", class: "btn btn-default"

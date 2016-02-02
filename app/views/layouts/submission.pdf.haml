@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    = wicked_pdf_stylesheet_link_tag 'pdf'
+    %link{:href => "https://fonts.googleapis.com/css?family=Mr+De+Haviland", :rel => "stylesheet", :type => "text/css"}
+    %body
+      .container
+        %h1.text-center Offices of White and Associates
+        = yield
+

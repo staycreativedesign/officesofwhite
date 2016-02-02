@@ -1,0 +1,40 @@
+div {
+  font-size: 10px;
+  width: 100%;
+}
+.text-center {
+  text-align: center
+  }
+.clear {
+  clear: both;
+}
+
+.initials-area {
+  width: 20%;
+  float:left;
+}
+
+.sign-area {
+  width: 70%;
+  float:left;
+}
+
+.margin-fix {
+  padding-top: 40px;
+}
+
+.sa-fix {
+  float: left;
+  width:50%;
+  border-bottom: 1px solid black;
+  font-family: 'mr_havilandregular', cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: blue;
+  font-stretch: normal;
+
+}
+
+.width-33 { float:left;width:33%; }
+.width-30 { float:left;width:30%; }
+.width-25 { float:left;width:25%; }

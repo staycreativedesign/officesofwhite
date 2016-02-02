@@ -1,14 +1,16 @@
-@import "base/globals";
 @import "base/fonts";
+@import "base/globals";
 @import "base/transitions";
 @import "base/mixins";
 @import "base/media_queries";
 @import "pages/index";
 @import "pages/navigation";
 @import "pages/user_registration";
+@import "pages/login";
 @import "pages/waiting_for_approval";
 // 1. Globals
 // everything that is used more than once through site
 .bold {font-weight: bold;}
 img {max-width: 100%;}
+
 

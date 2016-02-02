@@ -4,13 +4,17 @@ RSpec.describe UsersController, type: :controller do
   describe "POST create" do
     context "user fills out form correctly" do
       before do
-        post :create, user: Fabricate.attributes_for(:user)
+        post :create, user: Fabricate.attributes_for(:user, phone_number_1: "305", phone_number_2: "619", phone_number_3: "3724")
       end
       it "creates a new user" do
         expect(User.count).to equal(1)
       end
       it "sends an email" do
-        expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(2)
+       expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(2)
+      end
+
+      it "formats the phone number" do
+       expect(User.last.phone_number).to eq("305 - 619 - 3724")
       end
     end
     context "user does not fill out form correctly" do

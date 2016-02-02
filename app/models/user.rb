@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
+  before_validation :set_phone_numbers_and_ssn, on: :create
   has_secure_password
-  has_many :documents
-  before_validation :set_phone_numbers_and_ssn
+  has_many :user_uploaded_documents
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
                 :other_phone_number_1, :other_phone_number_2,
                 :other_phone_number_3, :ss_1, :ss_2, :ss_3, :employment_phone_1, :employment_phone_2, :employment_phone_3
@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   validates :approved, inclusion: { in: [true, false] }
   validates :admin, inclusion: { in: [true, false]  }
 
+  protected
   def set_phone_numbers_and_ssn
     #definitely refactor this to be a lot less ugly
     self.phone_number = join_numbers(phone_number_1, phone_number_2, phone_number_3)
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def join_numbers( num1, num2, num3)
-    "#{num1}#{num2}#{num3}"
+    num1 + " - " +  num2 + " - " + num3
   end
 end
 

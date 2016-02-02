@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'New user sign up' do
   scenario "+valid - User fills out Personal Information", js: true do
-    visit new_user_registration_path
+    visit new_user_path
     fill_in_personal_information
     fill_in_residence_information
     fill_in_employment_information

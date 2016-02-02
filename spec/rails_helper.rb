@@ -7,8 +7,10 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/poltergeist'
 require 'sidekiq/testing'
-Capybara.default_driver = :selenium
-# Capybara.javascript_driver = :poltergeist
+require 'capybara/rspec'
+require 'database_cleaner'
+Capybara.default_driver = :poltergeist
+#Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -32,27 +34,8 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  config.include Capybara::DSL
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  config.infer_spec_type_from_file_location!  # instead of true.
   config.use_transactional_fixtures = false
 
-
-  # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
-  #
-  # You can disable this behaviour by removing the line below, and instead
-  # explicitly tag your specs with their type, e.g.:
-  #
-  #     RSpec.describe UsersController, :type => :controller do
-  #       # ...
-  #     end
-  #
-  # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
 Shoulda::Matchers.configure do |config|

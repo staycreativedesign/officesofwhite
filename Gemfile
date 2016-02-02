@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-gem 'letter_opener', group: :development
 gem 'erb2haml', group: :development
 gem 'font-awesome-rails'
 gem 'selenium-webdriver'
@@ -46,11 +45,12 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'fabrication'
-  gem 'faker'
 end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'faker'
   gem 'byebug'
+  gem 'letter_opener'
   gem 'rspec-rails'
   gem 'pry'
   # Access an IRB console on exception pages or by using <%= console %> in views
