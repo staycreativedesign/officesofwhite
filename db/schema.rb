@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115200636) do
+ActiveRecord::Schema.define(version: 20160201235531) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20160115200636) do
     t.string   "letter_of_presentation"
     t.string   "payment_proof"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_uploaded_documents", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "approved",   default: false
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
