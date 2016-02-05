@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get '/steps' => 'steps#index'
+  patch '/steps/upload_documents' => 'steps#upload_documents', as: :upload_documents
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

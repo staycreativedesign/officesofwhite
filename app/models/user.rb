@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Documents
+
   before_validation :set_phone_numbers_and_ssn, on: :create
   has_secure_password
   has_many :user_uploaded_documents

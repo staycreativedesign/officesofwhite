@@ -7,11 +7,12 @@
         Please sign the letter of representation and upload it below. This
         will allow The Offices of White and Associates to speak on your behalf
         with the creditors and credit bureaus in regards to you credit file.
-  = form_for current_user do |f|
+  = form_for current_user, url: upload_documents_path do |f|
     .row
       .col-sm-12
-        = f.label :letter_of_presentation, "Upload signed letter of representation"
-        = f.file_field :letter_of_presentation
+        = f.fields_for :letter_of_representation do |ff|
+          = ff.label :letter_of_presentation, "Upload signed letter of representation"
+          = ff.file_field :file
     .separator
       .row
         .col-sm-12
@@ -23,8 +24,9 @@
           of all payments made to The Offices of White and Associates.
       .row
         .col-sm-12
-          = f.label :payment_verification
-          = f.file_field :payment_verification
+          = f.fields_for :payment_verification do |ff|
+            = ff.label :payment_verification, "Payment ver."
+            = ff.file_field :file
       .row
         .col-sm-12
           .well.name-warning.text-center

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205000119) do
+ActiveRecord::Schema.define(version: 20160205001010) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id"
@@ -24,18 +24,18 @@ ActiveRecord::Schema.define(version: 20160205000119) do
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "",    null: false
+    t.string   "email",                       default: "",    null: false
     t.string   "password_digest"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,     null: false
+    t.integer  "sign_in_count",               default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "suffix"
@@ -69,9 +69,11 @@ ActiveRecord::Schema.define(version: 20160205000119) do
     t.string   "credit_security_answer"
     t.date     "credit_mother_dob"
     t.string   "referred_by"
-    t.boolean  "approved",                default: false
-    t.boolean  "admin",                   default: false
-    t.integer  "step_number",             default: 0
+    t.boolean  "approved",                    default: false
+    t.boolean  "admin",                       default: false
+    t.integer  "step_number",                 default: 0
+    t.integer  "letter_of_representation_id"
+    t.integer  "payment_verification_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
