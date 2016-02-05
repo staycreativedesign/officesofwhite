@@ -34,7 +34,14 @@ class User < ActiveRecord::Base
   validates :approved, inclusion: { in: [true, false] }
   validates :admin, inclusion: { in: [true, false]  }
 
+  def approve!
+    unless approved
+      self.update_attributes(approved: true, step_number: 1)
+    end
+  end
+
   protected
+
   def set_phone_numbers_and_ssn
     #definitely refactor this to be a lot less ugly
     self.phone_number = join_numbers(phone_number_1, phone_number_2, phone_number_3)

@@ -30,4 +30,18 @@ describe User do
   it { should validate_presence_of(:employment_months) }
   #it { should validate_inclusion_of(:approved).in_array [true,false] }
   #it { should validate_inclusion_of(:admin).in_array [true,false] }
+
+  context "#approve!" do
+    before do
+      subject.approve!
+    end
+
+    it 'sets user to approved state' do
+      expect(subject.approved).to be_truthy
+    end
+
+    it 'sets user step_number to 1' do
+      expect(subject.step_number).to eq(1)
+    end
+  end
 end

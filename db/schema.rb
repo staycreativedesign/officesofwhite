@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115191654) do
+ActiveRecord::Schema.define(version: 20160205000119) do
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "file"
+    t.boolean  "is_approved", default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "documents", ["user_id"], name: "index_documents_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "",    null: false
@@ -61,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160115191654) do
     t.string   "referred_by"
     t.boolean  "approved",                default: false
     t.boolean  "admin",                   default: false
+    t.integer  "step_number",             default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

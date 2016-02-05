@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :first_steps, only: [:new, :create]
   end
+
+  get '/steps' => 'steps#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
