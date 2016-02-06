@@ -2,7 +2,7 @@ class StepsController < ApplicationController
   before_action :require_user
 
   def index
-    case current_user.step_number
+    case current_step
     when nil
       redirect_to new_user_path
     when 0
@@ -14,6 +14,7 @@ class StepsController < ApplicationController
 
   def step_one
     @header = "bg-index"
+
     find_documents_for_step(User::STEP_ONE_DOCUMENTS)
   end
 
@@ -25,15 +26,22 @@ class StepsController < ApplicationController
     end
   end
 
-  protected
 
   def step_params
     # TODO:
     # 1. check user current_step
     # 2. grab documents for this step only (doc_attributes: [:file], doc_attributes2: [:file],)
-    params.require(:user).permit(letter_of_representation_attributes: [:file], payment_verification_attributes: [:file])
+    case current_step
+    when 1
+      params.require(:user).permit(letter_of_representation_attributes: [:file], payment_verification_attributes: [:file])
+    when 2
+      params.require(:user).permit(foo_attributes: [:file], bar: [:file], baz: [:file])
+    end
   end
 
+  def current_step
+    current_user.step_number
+  end
   def find_documents_for_step(step_documents)
     step_documents.each do |st|
       # current_user.doc= Document.new unless current_user.doc
