@@ -2,16 +2,19 @@ class StepsController < ApplicationController
   before_action :require_user
 
   def index
-    if current_user.step_number == 1
-      User::STEP_ONE_DOCUMENTS.each do |st|
-        # current_user.doc= Document.new unless current_user.doc
-        unless current_user.send(st)
-          current_user.send((st.to_s+'=').to_sym, Document.new)
-        end
-      end
-    elsif current_user.step_number == 2
-      # TODO
+    case current_user.step_number
+    when nil
+      redirect_to new_user_path
+    when 0
+      redirect_to waiting_for_approval_path
+    when 1
+      step_one
     end
+  end
+
+  def step_one
+    @header = "bg-index"
+    find_documents_for_step(User::STEP_ONE_DOCUMENTS)
   end
 
   def upload_documents
@@ -29,5 +32,14 @@ class StepsController < ApplicationController
     # 1. check user current_step
     # 2. grab documents for this step only (doc_attributes: [:file], doc_attributes2: [:file],)
     params.require(:user).permit(letter_of_representation_attributes: [:file], payment_verification_attributes: [:file])
+  end
+
+  def find_documents_for_step(step_documents)
+    step_documents.each do |st|
+      # current_user.doc= Document.new unless current_user.doc
+      unless current_user.send(st)
+        current_user.send((st.to_s+'=').to_sym, Document.new)
+      end
+    end
   end
 end
