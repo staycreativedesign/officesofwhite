@@ -28,11 +28,14 @@ class StepsController < ApplicationController
 
 
   def step_params
+    #
     # TODO:
     # 1. check user current_step
+    # created a method to what step the current_user is on called current_step
     # 2. grab documents for this step only (doc_attributes: [:file], doc_attributes2: [:file],)
     case current_step
     when 1
+      binding.pry
       params.require(:user).permit(letter_of_representation_attributes: [:file], payment_verification_attributes: [:file])
     when 2
       params.require(:user).permit(foo_attributes: [:file], bar: [:file], baz: [:file])
