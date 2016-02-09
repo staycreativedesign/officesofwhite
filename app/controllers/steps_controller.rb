@@ -31,7 +31,7 @@ class StepsController < ApplicationController
     #
     # TODO:
     # 1. check user current_step
-    hash = Hash.new
+     hash = Hash.new
     User::STEP_ONE_DOCUMENTS.each do |k,v|
      str = k.to_s
       new_str = str + "_attributes"
@@ -40,12 +40,12 @@ class StepsController < ApplicationController
     end
     binding.pry
     params.require(:user).permit(hash)
-    #
+    ##
     # 2. grab documents for this step only (doc_attributes: [:file], doc_attributes2: [:file],)
     #case current_step
     #when 1
     #  binding.pry
-     # params.require(:user).permit(letter_of_representation_attributes: [:file], payment_verification_attributes: [:file])
+     params.require(:user).permit(letter_of_representation_attributes: [:file], payment_verification_attributes: [:file])
     #when 2
     #  params.require(:user).permit(foo_attributes: [:file], bar: [:file], baz: [:file])
     #end
