@@ -42,6 +42,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def find_current_step
+    self.step_number
+  end
   protected
 
   def set_phone_numbers_and_ssn
