@@ -27,11 +27,8 @@ class StepsController < ApplicationController
 
 
   def step_params
-    #
-    # TODO:
-    # 1. check user current_step
     hash = Hash.new
-    User::STEP_ONE_DOCUMENTS.each do |document|
+    current_user.set_documents.each do |document|
       hash[:"#{document}_attributes"] = [:file]
     end
     params.require(:user).permit(hash)
