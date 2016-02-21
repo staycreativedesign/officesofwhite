@@ -1,8 +1,9 @@
 class StepsController < ApplicationController
   before_action :require_user
+  before_action :find_user
 
   def index
-    case current_user.find_current_step
+    case @user.find_current_step
     when nil
       redirect_to new_user_path
     when 0
@@ -18,17 +19,22 @@ class StepsController < ApplicationController
   end
 
   def upload_documents
-    if current_user.update_attributes(step_params)
+    if @user.update_attributes(step_params)
       redirect_to waiting_for_approval_path, alert: "Your documents were uploaded"
+      @user.update_attributes(step_number: 0)
     else
-      render :index, alert: "Some errors occured"
+      render :index, alert: "Some errors occured please re-upload your documents"
     end
   end
 
 
+  def find_user
+    @user = current_user
+  end
+
   def step_params
     hash = Hash.new
-    current_user.set_documents.each do |document|
+    @user.set_documents.each do |document|
       hash[:"#{document}_attributes"] = [:file]
     end
     params.require(:user).permit(hash)
@@ -36,9 +42,8 @@ class StepsController < ApplicationController
 
   def find_documents_for_step(step_documents)
     step_documents.each do |st|
-      # current_user.doc= Document.new unless current_user.doc
-      unless current_user.send(st)
-        current_user.send((st.to_s+'=').to_sym, Document.new)
+      unless @user.send(st)
+        @user.send((st.to_s+'=').to_sym, Document.new)
       end
     end
   end
