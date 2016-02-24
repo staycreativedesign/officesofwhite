@@ -10,7 +10,7 @@ require 'sidekiq/testing'
 require 'capybara/rspec'
 require 'database_cleaner'
 Capybara.default_driver = :poltergeist
-#Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -36,8 +36,25 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
 
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Rails.root + "public/uploads/test")
+    end
+  end
+
+  config.backtrace_exclusion_patterns = [
+    /\/lib\d*\/ruby\//,
+    /bin\//,
+    /gems/,
+    /spec\/spec_helper\.rb/,
+    /lib\/rspec\/(core|expectations|matchers|mocks)/
+  ]
   config.infer_spec_type_from_file_location!
 end
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, {js_errors: false})
+end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # Choose a test framework:
