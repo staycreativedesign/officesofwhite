@@ -15,7 +15,7 @@ feature 'New user sign up' do
     expect(page).to have_content("Your request has been sent. Please log out, and wait for an email to be sent to you with further instructions. Thank you")
   end
   def check_check_boxes
-    find(".name-warning").click
+    find(:css, ".final").click
     find(:css, "#correct_information").click
     find(:css, "#accept_statement").click
     sleep(1)
