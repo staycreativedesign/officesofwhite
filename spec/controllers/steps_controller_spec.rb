@@ -43,7 +43,6 @@ RSpec.describe StepsController, type: :controller do
         set_current_user(jim)
         patch :upload_documents, {"user" => { "letter_of_representation_attributes" => { "file" => Fabricate(:document)}, "payment_verification_attributes" => { "file" => Fabricate(:document)} }}
       end
-        binding.pry
         it { is_expected.to redirect_to(waiting_for_approval_path) }
     end
 
