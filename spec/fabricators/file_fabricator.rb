@@ -1,8 +1,5 @@
 Fabricator(:document) do
-  file {
-    ActionDispatch::Http::UploadedFile.new(
-      :tempfile => File.new(Rails.root.join("spec/support/invoice.pdf")),
-      :filename => File.basename(File.new(Rails.root.join("spec/support/invoice.pdf")))
-    )
-  }
+  file do
+    File.open(File.join(Rails.root, 'spec', 'support', 'document.pdf'))
+  end
 end
