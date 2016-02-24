@@ -44,4 +44,13 @@ describe User do
       expect(subject.step_number).to eq(1)
     end
   end
+
+  context "#find_current_step" do
+    before do
+      subject.find_current_step
+    end
+    it 'finds current step' do
+      expect(subject.find_current_step).to eq(0)
+    end
+  end
 end
