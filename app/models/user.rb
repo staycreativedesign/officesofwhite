@@ -36,6 +36,22 @@ class User < ActiveRecord::Base
   validates :approved, inclusion: { in: [true, false] }
   validates :admin, inclusion: { in: [true, false]  }
 
+  def set_documents
+    case self.find_current_step
+    when 1
+      User::STEP_ONE_DOCUMENTS
+    when 2
+      User::STEP_TWO_DOCUMENTS
+    end
+  end
+
+  def check_if_documents_present
+    documents = set_documents
+    documents.each do |document|
+      puts self.send(document).present?
+    end
+  end
+
   def approve!
     unless approved
       self.update_attributes(approved: true, step_number: 1)
