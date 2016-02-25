@@ -12,10 +12,17 @@ class StepsController < ApplicationController
       step_one
     end
   end
-
+  #REFACTOR
   def step_one
     @header = "bg-index"
     find_documents_for_step(User::STEP_ONE_DOCUMENTS)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "documents",
+          template: "layouts/step_one.pdf.haml"
+      end
+    end
   end
 
   def upload_documents
