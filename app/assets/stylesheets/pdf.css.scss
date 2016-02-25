@@ -1,10 +1,16 @@
+.container {
+  margin-top:70px;
+}
 div {
   font-size: 10px;
   width: 100%;
 }
 .text-center {
-  text-align: center
-  }
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
 .clear {
   clear: both;
 }
@@ -32,9 +38,46 @@ div {
   font-style: normal;
   color: blue;
   font-stretch: normal;
-
 }
+
+.no-bold { font-weight: normal }
 
 .width-33 { float:left;width:33%; }
 .width-30 { float:left;width:30%; }
 .width-25 { float:left;width:25%; }
+
+.documents {
+  margin-top: 110px;
+  font-size: 16px; font-family: 'Helvetica';
+}
+
+.documents p {
+  padding: 5px 0;
+  line-height: 20px;
+}
+
+.mt70 { margin-top: 70px }
+.text-up { text-transform: uppercase; }
+
+.line-height-fix {
+  line-height: 10px;
+}
+
+.page-break {
+  display: block;
+  clear: both;
+  page-break-after: always;
+}
+
+.no-margin {
+  margin: 0;
+  padding: 0;
+}
+
+.header-text {
+  font-size: 14px;
+}
+
+.header-addr {
+  font-size: 13px;
+}
