@@ -1,0 +1,555 @@
+!!!
+%html
+  %head
+    = wicked_pdf_stylesheet_link_tag 'pdf'
+    %link{:href => "https://fonts.googleapis.com/css?family=Mr+De+Haviland", :rel => "stylesheet", :type => "text/css"}
+    %body
+      %div
+        %h1.text-center.no-bold
+          Offices of White and Associates
+        %p.text-center.no-bold.no-margin.header-text
+          290 NW 165th Street, #P100, Miami, FL 33169
+        %p.text-center.no-bold.no-margin.header-addr
+          Phone: (480)-999-4483 - Toll Free: (800)-632-9448 - Fax: (210)319-4483 - Email: info@whitecreditlaw.com
+        %h2.text-center.no-bold
+          Letter of Representation
+        %p.text-right
+          = Date.today.to_formatted_s(:long_ordinal)
+
+        .documents
+          %p
+            = current_user.first_name
+            = current_user.try(:middle_name)
+            = current_user.last_name
+          %p.text-up
+            Social Security Number
+            = current_user.social_security
+
+          %p.mt70
+            To whom it may concern,
+          %p
+            Federal Law requires that any unverifiable information must be removed from a credit report
+            regardless of accuracy and all outdated or erroneous information also must be removed. #{current_user.suffix} #{current_user.first_name} #{current_user.try(:middle_name)} #{current_user.last_name} agrees to allow The Offices of White and Associates to represent his interests in this matter, and either myself or Mr. Ramirez will be speaking on his behalf.
+
+          %p
+            We agree to act diligently in the pursuit of this matter and will carry out these services within all
+            Federal and State laws.
+          %p
+            The Offices of White and Associates would also like to request, in writing that no telephone contact
+            be made by your offices to #{current_user.suffix} #{current_user.last_name}'s home, place of employment, or family members. If your
+            offices attempt to communicate with #{current_user.suffix} #{current_user.last_name}, his family members, or through his employment,
+            including but not limited to computer generated calls or correspondence sent to or with any third
+            parties, it will be considered harassment and we will have no choice but to file suit. ALL future
+            communications with #{current_user.suffix} #{current_user.last_name} MUST be done in writing and sent via facsimile to the number
+            listed above.
+          %p
+            This is an attempt to correct your records; any information obtained shall be used for that purpose.
+
+          %p.mt70
+            AGREED:
+
+          %p.line-height-fix
+            ______________________________________________
+            %br/
+            Signature - #{current_user.first_name} #{current_user.try(:middle_name)} #{current_user.last_name}
+            %br/
+            %span.fs-12
+              = request.remote_ip
+              \- Please be aware that your IP address has been attached to your file.
+
+        .page-break
+    %div.container-document
+      %h1.text-center.no-bold
+        Offices of White and Associates
+      %p.text-center.no-bold.no-margin.header-text
+        290 NW 165th Street, #P100, Miami, FL 33169
+      %p.text-center.no-bold.no-margin.header-addr
+        Phone: (480)-999-4483 - Toll Free: (800)-632-9448 - Fax: (210)319-4483 - Email: info@whitecreditlaw.com
+      %h2.text-center.no-bold
+        Service Agreement
+
+      %p.text-right
+        = Date.today.to_formatted_s(:long_ordinal)
+
+      .documents
+        %p
+          This agreement between The Offices of White and Associates and #{current_user.first_name} #{current_user.try(:middle_name)} #{current_user.last_name} (Client) is for the express purpose of attempting to resolve fraudulent, and  misrepresentations, unverifiable, and erroneous information, which the Client claims to appear on the credit report(s) which have been furnished to The Offices of White and Associates. The Offices of White and Associates is not a debt consolidation or bill payment program. Federal law requires that all outdated or erroneous information must be removed from consumer credit reporting agencies, and The Offices of White and Associates agrees to act diligently in the pursuit of this matter, and to carry out this agreement within all Federal and State laws.
+
+        %ol{:type => "I"}
+          %li
+            Client acknowledges and agrees that the term of this Service Agreement is one year.
+            Upon the expiration of the term, this Service Agreement shall automatically renew for
+            successive one-year terms. If the Client decides to cancel this Agreement at any time,
+            Client shall give fifteen (15) days notice requesting termination with The Offices of White
+            and Associates. THE CLIENT IS STILL RESPONSIBLE FOR ANY SERVICES
+            PERFORMED UP TO THE DATE OF RECEIPT OF THE NOTICE TO CANCEL SUCH
+            SERVICES.
+          %li
+            NO MODIFICATION, AMENDMENT, WAIVER, OR CONSENT OF ANY PROVISION OF
+            THIS SERVICE AGREEMENT SHALL BE EFFECTIVE UNLESS THE SAME SHALL BE
+            IN WRITING AND SIGNED BY The Offices of White and Associates.
+          %li
+            The Services rendered by The Offices of White and Associates include but are not
+            limited to:
+            %ol{:type => "a"}
+              %li
+                Processing enrollment requests
+              %li
+                Set Up and open a file for Client
+              %li
+                Complete analysis of credit file
+              %li
+                Professional advice and counseling in regards to analysis of Clients credit
+              %li
+                Preparation of correspondence to Transunion, Equifax and Experian
+              %li
+                Preparation of correspondence to creditors
+              %li
+                Status updates sent to Client on a monthly basis
+              %li
+                Invoices for billing purposes sent to Client on a monthly basis
+            %li
+              Client agrees to grant limited Power of Attorney to Law Offices of White and Associates,
+              and any and all persons in their employ, as the Client/'s agent, to have the necessary
+              power and authority to undertake and perform the services set forth in Section III. above
+              on the Client's behalf. The Client hereby gives permission to The Offices of White and
+              Associates to sign the Client's name on all documents written or submitted
+              electronically on the Client/'s behalf for the purpose of disputing fraudulent, inaccurate,
+              erroneous, and obsolete credit information held on the Client's credit report.
+
+    %p.ip.ip-margin
+      %br
+      = request.remote_ip
+      \- please be aware that your ip address has been attached to your file.
+
+    %p.sig-fix
+      ___________
+      %br/
+      client initials
+    .clear
+    .container-document
+      .documents
+        %ol{:type => "I", :start => "5"}
+          %li
+            During the time the Client is represented by The Offices of White and Associates, it is
+            the responsibility of the undersigned to:
+            %ol{:type => "a"}
+              %li
+                Carefully review The Offices of White and Associates Service Agreement.
+              %li
+                Carefully review the Terms and Conditions of The Offices of White and Associates
+                website.
+              %li
+                Carefully review the Privacy Policy of The Offices of White and Associates website.
+              %li
+                Maintain a credit monitoring service (For example- TrueCredit.com).
+              %li
+                Notify The Offices of White and Associates of any important changes in regards to
+                Client's personal information, address, phone number, email etc.
+              %li
+                Forward copies of all correspondence received from any credit bureaus including but not
+                limited to letters and credit reports.
+              %li
+                Forward copies of all correspondence you receive from any creditors.
+              %li
+                PAY ANY AND ALL FEES WITHIN FIVE (5) BUSINESS DAYS FROM THE TIME AN
+                INVOICE IS SUBMITTED TO CLIENT.
+          %li
+            Client agrees and certifies to be a minimum of eighteen (18) years of age.
+          %li
+            Client understands that The Offices of White and Associates is not responsible for any
+            legal actions taken by the creditors against Client mentioned in this Service Agreement
+            prior, during, or after services performed.
+          %li
+            Client acknowledges and understands that The Offices of White and Associates cannot
+            guarantee the removal of items which are fraudulent, incomplete, inaccurate, obsolete,
+            unverifiable, misleading, and/or incorrect.
+          %li
+            Client understands and acknowledges that if at any time there is evidence of past disputes
+            with any of the three (3) credit bureaus (Transunion, Equifax, and Experian), any
+            guarantees and the Service Agreement will be made null and void due to Non- Disclosure
+            by the Client and or any person representing the Client.
+          %li
+            The undersigned (Client) agrees to pay an initial flat-rate fee ("Enrollment Fee") (required
+            to start work on your case) at the time this Service Agreement is signed and dated. The
+            initial fee termed as the "Enrollment Fee" for the purposes of this Agreement is NonRefundable
+            and Non-Returnable.
+          %ol{:type => "a"}
+            %li
+              Client agrees to pay a one-time Enrollment Fee of $8,000.00.
+            %li
+              For an additional $1,000.00, Client has the option to divide the Enrollment Fee
+              into two easier payments of $4,500.00 The initial $4,500.00 will be due at the
+              time this Service Agreement is signed and dated. The second payment of
+              $4,500.00 will be due (30) days from the day this Service Agreement is signed
+              and dated.
+    %p.ip.ip-margin
+      %br
+      = request.remote_ip
+      \- please be aware that your ip address has been attached to your file.
+
+    %p.sig-fix
+      ___________
+      %br/
+      client initials
+    .clear
+    .container-document
+      .documents
+        %ol{:type => "I", :start => "11"}
+          %li
+            It is the undersigned's obligation not to apply for new credit while The Offices of White and
+            Associates is in the process of resolving disputed information on Client's credit report.
+            %ol{:type => "a"}
+              %li
+                Client understands and acknowledges that applying for new credit during this
+                process may negate any disputes.
+              %li
+                Client understands and acknowledges that applying for new credit might delay
+                the performance of any services performed.
+              %li
+                Client understands and acknowledges that applying for new credit during the
+                time that their file is in dispute may void the Service Agreement with The Offices
+                of White and Associates entirely.
+          %li
+            The undersigned (Client) agrees to pay any removal fees associated with an account that
+            has been removed from all three credit bureaus (Transunion, Equifax, and Experian).
+            %ol{:type => "a"}
+              %li
+                Client agrees to pay an additional $1,000.00 per each fraudulent or
+                unverifiable/erroneous public record, real estate account, mortgage, or home
+                equity loan.
+              %li
+                Client agrees to pay an additional $500.00 for all other fraudulent or unverifiable/
+                erroneous loans, collections, etc.
+          %li
+            Client understands and acknowledges that a delinquent payment status for any services
+            performed will suspend all work, including but not limited to:
+            %ol{:type => "a"}
+              %li
+                Ceasing all correspondence to Client's creditors and credit bureaus until payment
+                in full is received.
+              %li
+                Resignation letters sent to all creditors stating representation has been
+                terminated by The Offices of White and Associates.
+              %li
+                Client acknowledges and understands that once Resignation letters are sent, the
+                creditor has the right to report any information whether previously deleted or not.
+              %li
+                Client's personal information and entire file will be forwarded to Certified
+                Recovery. Certified Recovery will continue collection efforts, while reporting
+                negatively on Client's credit report.
+              %li
+                To use the services offered by The Offices of White and Associates after there is
+                a failure to make a timely payment within ninety (90) days, Client agrees and
+                acknowledges that they might be required to establish a new account, and pay
+                Enrollment fees again.
+            %li
+              To secure payment hereof, the client jointly and severally irrevocably authorizes any
+              attorney of any court of record in the State of Texas, or in any other jurisdiction, to appear
+              for any one or more of them in such court in term or vacation, after default in payment
+              hereof and confess a judgment without process in favor of The Offices of White and
+              Associates hereof for such amount as may then appear unpaid hereon, to release all
+              errors which may intervene in any such proceedings, waive any summons or other
+              process, and consent to immediate execution upon such judgment, hereby ratifying every
+              act of such attorney hereunder. The client also expressly waives benefit of all exemption
+              laws and presentment, demand, protest, and notice of maturity, and/or protest, and also
+              waives benefit of any other requirements necessary to hold The Offices of White and
+              Associates liable as makers and endorsers.
+    %p.ip.ip-margin
+      %br
+      = request.remote_ip
+      \- please be aware that your ip address has been attached to your file.
+    %p.sig-fix
+      ___________
+      %br/
+      client initials
+    .clear
+    .container-document
+      .documents
+        %ol{:type => "I", :start => "15"}
+          %li
+            Throughout the Enrollment/ Dispute process Client will receive documents requiring their
+            signature. In an effort to make our services more efficient and convenient for Clients we do
+            this electronically. When signing documents electronically Client agrees:
+            %ol{:type => "a"}
+              %li
+                To receive all documents electronically and to communicate with The Offices of
+                White and Associates electronically.
+              %li
+                To use the Electronic Signature to establish identity and sign electronic
+                documents and forms.
+              %li
+                The use of a key pad, mouse, or other device to select an item, button, icon or
+                similar act/action while using any electronic service we offer; or in accessing or
+                making any transactions regarding an agreement, acknowledgement, consent,
+                terms, disclosures, or conditions constitutes the Client's signature, acceptance,
+                and agreement as if actually signed by the Client in writing.
+              %li
+                That no certification authority or other third party verification is necessary to
+                validate the Electronic Signature.
+              %li
+                The lack of such certification or third party verification will not in any way affect
+                the enforceability of the Client's signature or resulting contract between The
+                Offices of White and Associates.
+              %li
+                The undersigned (Client) agrees and understands that the Electronic Signature
+                (E-Signature) executed in conjunction with the electronic submission of your
+                registration and any other documents provided by The Offices of White and
+                Associates shall be legally binding and such agreement shall be considered
+                acknowledged and understood.
+              %li
+                The Electronic Signature has the full force and effect of a signature affixed by
+                hand to a paper document.
+              %li
+                The undersigned (Client) is solely responsible for protecting their Electronic
+                Signature.
+          %li
+            Client agrees that any correspondence sent on Client's behalf/ and or in Client's name by
+            The Offices of White and Associates will not be kept as part of Client's file.
+          %li
+            Client understands that is Law Office of White and Associates policy to remove any/
+            all documents not required by law after thirty (30) days of completion of the services
+            provided or upon cancellation.
+          %li
+            All disputes which may arise between the parties under or with respect to this Agreement
+            or The Offices of White and Associates' services hereunder shall be resolved solely by
+            binding arbitration conducted in the State of Texas. Upon conclusion of any arbitration
+            proceedings hereunder, the arbitrator shall render findings of fact and conclusions of law
+            and a written opinion setting forth the basis and reasons for any decision he or she has
+            reached and shall deliver such documents to each party along with a signed copy of the
+            award. Any judgment upon an award rendered by an arbitrator may be entered in any state
+            or federal court having jurisdiction of the subject matter hereof.
+
+
+    %p.ip.ip-margin
+      %br
+      = request.remote_ip
+      \- please be aware that your ip address has been attached to your file.
+
+    %p.sig-fix
+      ___________
+      %br/
+      client initials
+    .clear
+    .container-document
+      .documents
+        %ol{:type => "I", :start => "19"}
+          %li
+            BY USING ANY SERVICES OFFERED THROUGH The Offices of White and Associates
+            OR THE WEBSITE, YOU AGREE TO ARBITRATE ALL DISPUTES AND CLAIMS
+            BETWEEN YOU AND The Offices of White and Associates ON AN INDIVIDUAL BASIS
+            ONLY AND NOT AS A PART OF ANY CLASS. YOU AGREE THAT YOU ARE WAIVING
+            ALL RIGHTS TO:
+            %ol{:type => "a"}
+              %li
+                A TRIAL BY JURY.
+              %li
+                PARTICIPATE IN A CLASS ACTION LAW SUIT OR CLASS ACTION
+                ARBITRATION.
+              %li
+                BRING AN ACTION AGAINST The Offices of White and Associates IN A
+                COURT OF LAW.
+              %li
+                CLIENT MAY INDIVIDUALLY ARBITRATE ANY CLAIM IN ANY JURISDICTION
+                IN THE STATE OF TEXAS. The Offices of White and Associates WILL
+                REIMBURSE CLIENT UP TO $100 OF THE ARBITRATION FILING FEE. THE
+                RULES OF THE AMERICAN ARBITRATION ASSOCIATION THEN IN FORCE
+                SHALL GOVERN THE ARBITRATION.
+          %li
+            THE CLIENT AGREES AND ACKNOWLEDGES THAT THIS WAIVER WAS MADE
+            KNOWINGLY, WILLINGLY AND VOLUNTARILY AND WITHOUT DURESS, AND ONLY
+            AFTER EXTENSIVE CONSIDERATION OF THE RAMIFICATIONS OF THIS WAIVER
+            WITH THEIR ATTORNEYS.
+          %li
+            BY USING ANY SERVICES OFFERED THROUGH The Offices of White and Associates
+            OR THE WEBSITE, YOU AGREE TO ARBITRATE ALL DISPUTES AND CLAIMS
+            BETWEEN YOU AND The Offices of White and Associates ON AN INDIVIDUAL BASIS
+            ONLY AND NOT AS A PART OF ANY CLASS. YOU AGREE THAT YOU ARE WAIVING
+            ALL RIGHTS TO:
+          %ol{:type => "a"}
+            %li
+              CLIENT'S NAME
+            %li
+              ADDRESS
+            %li
+              A CLEAR STATEMENT THAT YOU DO NOT WISH TO RESOLVE DISPUTES
+              WITH The Offices of White and Associates THROUGH ARBITRATION.
+          %li
+            Client may cancel this Service Agreement without penalty or obligation at anytime before
+            midnight of the third (3rd) business day after the date on which this Service Agreement is
+            signed. In order to do so Client will need to ALL of the following.
+          %ol{:type => "a"}
+            %li
+              Notify The Offices of White and Associates by phone at 800-632-WHITELAW
+            %li
+              Send a signed and dated Notice of Cancellation to The Offices of White and
+              Associates by email to INFO@WHITECREDITLAW.COM.
+          %li
+            If any one or more of the words or terms of this Agreement shall be held to be indefinite,
+            invalid, illegal or otherwise unenforceable, in whole or in part, for any reason, by any court
+            of competent jurisdiction, the remainder of this Note shall continue in full force and effect
+            and shall be construed as if such indefinite, invalid, illegal or unenforceable words or terms
+            had not been contained herein.
+          %li
+            ENTIRE AGREEMENT. This Agreement constitutes the entire agreement between client
+            and The Offices of White and Associates with respect to the subject matter hereof, all
+            previous understandings whether oral or written having been merged herein. No
+            representations or warranties have been made other than those expressly set forth herein.
+            This Agreement may not be changed, modified, renewed, extended, or discharged or any
+            covenant or provision hereof waived except by an agreement in writing signed by the party
+            against whom enforcement of the change, modification, renewal, extension, discharge or
+            waiver is sought. This Agreement may be signed in one or more separate counterparts,
+            including by email and facsimile and each of which, when so signed, will be deemed an
+            original and will together constitute one and the same instrument.
+
+    %p.ip.ip-margin
+      %br
+      = request.remote_ip
+      \- please be aware that your ip address has been attached to your file.
+
+    %p.sig-fix
+      ___________
+      %br/
+      client initials
+    .clear
+    .container-document
+      .documents
+        %p
+          IF YOU CHOSE NOT TO AGREE TO ANY OF THE TERMS HEREIN, YOU UNDERSTAND THAT
+          LAW OFFICES OF WHITE AND ASSOCIATES WILL NOT BE ABLE TO REPRESENT YOU NOR
+          WILL YOU BE ALLOWED TO USE THE WEBSITE OR BECOME A CLIENT OF The Offices of White
+          and Associates OR ITS AFFILIATES.
+        %p
+          I, #{current_user.first_name.upcase} #{current_user.try(:middle_name).upcase} #{current_user.last_name.upcase} INDICATE THAT I AM A MENTALLY ALERT AND COMPETENT,
+          FULLY INFORMED AS TO THE CONTENTS OF THIS SERVICE AGREEMENT, AND WAS NOT
+          SUBJECTED TO UNDUE INFLUENCE OR COERCION.
+        %p
+          BY SIGNING BELOW, I HEREBY ENTER INTO AND AGREE TO BE BOUND BY ALL TERMS AND
+          CONDITIONS OF THIS SERVICE AGREEMENT. FURTHER I ACKNOWLEDGE I HAVE READ THIS
+          CONTRACT IN ITS ENTIRETY AND FULLY UNDERSTAND THE CONTENTS OF THE SERVICE
+          AGREEMENT PRIOR TO SIGNING BELOW.
+
+        %p.pull-left-sig
+          ______________________________
+          %br/
+          Client's Signature
+          %br/
+          %span.fs-12
+            = request.remote_ip
+            \- Please be aware that your IP address has been attached to your file.
+
+        %p.pull-right-date
+          _________________
+          %br/
+          Date
+        .clear
+        %p
+          This Service Agreement is made effective on #{Date.today.to_formatted_s(:long_ordinal)} between #{current_user.suffix} #{current_user.first_name} #{current_user.try(:middle_name)} #{current_user.last_name} residing at #{current_user.home_address} #{current_user.city} - #{current_user.state} - #{current_user.zipcode}, and The Offices of White and Associates.
+    .page-break
+    .container-document
+      %div
+        %h1.text-center.no-bold
+          Offices of White and Associates
+        %p.text-center.no-bold.no-margin.header-text
+          290 NW 165th Street, #P100, Miami, FL 33169
+        %p.text-center.no-bold.no-margin.header-addr
+          Phone: (480)-999-4483 - Toll Free: (800)-632-9448 - Fax: (210)319-4483 - Email: info@whitecreditlaw.com
+        %h2.text-center.no-bold
+          Disclosure Statement Required Pursuant to Federal Law
+        %p.text-right
+          = Date.today.to_formatted_s(:long_ordinal)
+      .documents
+        %p
+          Consumer Credit File Rights Under State And Federal Law
+        %p
+          You have a right to dispute inaccurate information in your credit report by contacting the credit bureau
+          directly. However, neither you nor any "credit repair" company or credit repair organization has the
+          right to have accurate, current, and verifiable information removed from your credit report. The credit
+          bureau must remove accurate, negative information from your report only if it is over 7 years old.
+          Bankruptcy information can be reported for 10 year.
+        %p
+          You have a right to obtain a copy of your credit report from a credit bureau. You may be charged a
+          reasonable fee. There is no fee, however, if you have been turned down for credit, employment,
+          insurance, or a rental dwelling because of information in your credit report within the preceding 60
+          days. The credit bureau must provide someone to help you interpret the information in your credit file.
+          You are entitled to receive a free copy of your credit report if you are unemployed and intend to apply
+          for employment in the next 60 days, if you are a recipient of public welfare assistance, or if you have
+          reason to believe that there is inaccurate information in your credit report due to fraud.
+        %p
+          You have a right to sue a credit repair organization that violates the Credit Repair Organization Act.
+          This law prohibits deceptive practices by credit repair organizations.
+        %p
+          You have the right to cancel your contract with any credit repair organization for any reason within 3
+          business days from the date you signed it.
+        %p
+          Credit bureaus are required to follow reasonable procedures to ensure that the information they report
+          is accurate. However, mistakes may occur.
+        %p
+          You may, on your own, notify a credit bureau in writing that you dispute the accuracy of information in
+          your credit file. The credit bureau must then reinvestigate and modify or remove inaccurate or
+          incomplete information. The credit bureau may not charge any fee for this service. Any pertinent
+          information and copies of all documents you have concerning an error should be given to the credit
+          bureau.
+        %p
+          If the credit bureau's reinvestigation does not resolve the dispute to your satisfaction, you may send a
+          brief statement to the credit bureau, to be kept in your file, explaining why you think the record is
+          inaccurate. The credit bureau must include a summary of your statement about disputed information
+          with any report it issues about you.
+        %p
+          The Federal Trade Commission regulates credit bureaus and credit repair organizations. For more
+          information contact:
+        %p
+          The Public Reference Branch
+          %br/
+          Federal Trade Commission
+          %br/
+          Washington, D.C. 20580
+        %p
+          Initials ____________ I, #{current_user.first_name} #{current_user.try(:middle_name)} #{current_user.last_name} have read and understood these rights as a consumer in regards to my credit under state and federal law.
+        %p
+          _______________________________________________
+          %br
+          Signature - #{current_user.first_name} #{current_user.try(:middle_name)} #{current_user.last_name}
+          %br/
+          %span.fs-12
+            = request.remote_ip
+            \- Please be aware that your IP address has been attached to your file.
+
+      .clear
+      .page-break
+      .container-document
+        %div
+          %h1.text-center.no-bold
+            Offices of White and Associates
+          %p.text-center.no-bold.no-margin.header-text
+            290 NW 165th Street, #P100, Miami, FL 33169
+          %p.text-center.no-bold.no-margin.header-addr
+            Phone: (480)-999-4483 - Toll Free: (800)-632-9448 - Fax: (210)319-4483 - Email: info@whitecreditlaw.com
+          %h2.text-center.no-bold
+            Notice of Cancellation
+          %p.text-right
+            = Date.today.to_formatted_s(:long_ordinal)
+        .documents
+          %p
+            Email this page ONLY when cancelling your Service Agreement within the stated timeframe.
+          %p
+            You may cancel this contract, without any penalty or obligation, at any time before midnight of the 3rd
+            day, which begins after the date the Service Agreement is signed by you.
+          %p
+            To cancel this contract, please email, dated copy of this cancellation notice, or any other written notice
+            to Law Offices of White and Associates at INFO@WHITECREDITLAW.COM before midnight on the
+            third (3rd) business day from the date you signed the Service Agreement.
+          %p.mt70
+          %p.pull-left-sig
+            ______________________________
+            %br/
+            Client's Signature
+            %br/
+            %span.fs-12
+              = request.remote_ip
+              \- Please be aware that your IP address has been attached to your file.
+
+          %p.pull-right-date
+            _________________
+            %br/
+            Date
