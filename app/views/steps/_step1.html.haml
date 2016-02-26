@@ -1,40 +1,41 @@
-.separator
-  .row
-    .col-sm-12
-      %h3
-        Letter Of Representation
-      .sub-title
-        Please sign the letter of representation and upload it below. This
-        will allow The Offices of White and Associates to speak on your behalf
-        with the creditors and credit bureaus in regards to you credit file.
+.separator.steps
   = form_for current_user, url: upload_documents_path do |f|
     .row
-      .col-sm-12
-        %p
-          = link_to "Hello", steps_path(format: 'pdf')
+      .col-sm-8.col-centered.col-md-8.info-box
+        %h3
+          Download Documents
+        .sub-title.italics
+          Please click the link below to download the documents. These three documents will need to be signed in order for you to continue. After all documents are signed in the designated areas, then you will need to upload each of them in their sections listed below.
+        %p.border-top
+          = link_to "Download Documents", steps_path(format: 'pdf')
     .row
-      .col-sm-12
-        = f.fields_for :letter_of_representation do |ff|
-          = ff.label :letter_of_presentation, "Upload signed letter of representation"
-          = ff.file_field :file
+      .col-sm-8.col-centered.col-md-8.info-box
+        %h3
+          Letter Of Representation
+        .sub-title.italics
+          Please sign the letter of representation and upload it below. This
+          will allow The Offices of White and Associates to speak on your behalf
+          with the creditors and credit bureaus in regards to you credit file.
+        %p.border-top
+          = f.fields_for :letter_of_representation do |ff|
+            = ff.label :letter_of_presentation, "Upload signed letter of representation"
+            = ff.file_field :file
     .separator
       .row
-        .col-sm-12
+        .col-sm-8.col-centered.col-md-8.info-box
           %h3
             Payment Verification
-        .sub-title
-          Once you receive your invoice in regards to your credit file, please
-          upload your deposit slip/ receipt here. This will allow you to keep record
-          of all payments made to The Offices of White and Associates.
+          .sub-title.italics
+            Once you receive your invoice in regards to your credit file, please
+            upload your deposit slip/ receipt here. This will allow you to keep record
+            of all payments made to The Offices of White and Associates.
+          %p.border-top
+            = f.fields_for :payment_verification do |ff|
+              = ff.label :payment_verification, "Upload payment verification"
+              = ff.file_field :file
       .row
-        .col-sm-12
-          = f.fields_for :payment_verification do |ff|
-            = ff.label :payment_verification, "Payment ver."
-            = ff.file_field :file
+        .col-sm-8.col-centered.col-md-8.info-box.well
+          Please make sure all documents are notarized before uploading them. If files are not notarize you will not be able to proceed.
       .row
-        .col-sm-12
-          .well.name-warning.text-center
-            Please make sure all documents are notarized before uploading them. If files are not notarize you will not be able to proceed.
-      .row
-        .col-sm-12
-          = f.submit
+        .col-sm-8.col-centered.col-md-8.mt20.nolrp
+          = f.submit "Upload Documents", class: "btn btn-primary full-width"
