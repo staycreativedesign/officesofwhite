@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160224170130) do
     t.integer  "step_number",                 default: 0
     t.integer  "letter_of_representation_id"
     t.integer  "payment_verification_id"
-    t.string   "disclosure_statement_id"
+    t.integer  "disclosure_statement_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
