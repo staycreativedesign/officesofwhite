@@ -10,6 +10,10 @@
   = form_for current_user, url: upload_documents_path do |f|
     .row
       .col-sm-12
+        %p
+          = link_to "Hello", steps_path(format: 'pdf')
+    .row
+      .col-sm-12
         = f.fields_for :letter_of_representation do |ff|
           = ff.label :letter_of_presentation, "Upload signed letter of representation"
           = ff.file_field :file

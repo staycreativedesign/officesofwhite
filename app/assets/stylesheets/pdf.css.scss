@@ -16,14 +16,14 @@ div {
 }
 
 .initials-area {
-  width: 20%;
-  float:left;
+  align-self: flex-end
 }
 
 .sign-area {
   width: 70%;
   float:left;
 }
+
 
 .margin-fix {
   padding-top: 40px;
@@ -41,19 +41,20 @@ div {
 }
 
 .no-bold { font-weight: normal }
+.fs-12 { font-size: 12px }
 
 .width-33 { float:left;width:33%; }
 .width-30 { float:left;width:30%; }
 .width-25 { float:left;width:25%; }
 
 .documents {
-  margin-top: 110px;
-  font-size: 16px; font-family: 'Helvetica';
+//  margin-top: 110px;
+  font-size: 14px; font-family: 'Helvetica';
 }
 
-.documents p {
-  padding: 5px 0;
-  line-height: 20px;
+.documents p, .documents li {
+  padding: 3px 0;
+  line-height: 16px;
 }
 
 .mt70 { margin-top: 70px }
@@ -80,4 +81,64 @@ div {
 
 .header-addr {
   font-size: 13px;
+}
+
+.client-initials, .small-caps {
+  font-variant: small-caps;
+}
+
+.sa-one {
+ bottom: -30px;
+}
+
+.client-initials {
+  background-color: yellow;
+  height: 40px;
+}
+.container-document {
+  height: 940px;
+}
+
+.pull-left {
+  float: left;
+  width: 50%;
+}
+
+.pull-left-sig {
+  float: left;
+  width: 70%;
+}
+
+.pull-right-date {
+  float: right;
+  width: 30%;
+  text-align: right;
+}
+.pull-right {
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+
+.ip {
+ width: 70%;
+ float: left;
+ font-size: 12px;
+}
+
+.ip-margin {
+  margin-top: 20px;
+}
+
+
+
+.sig-fix {
+  font-variant: small-caps;
+  width: 20%;
+  float: right;
+  text-align: right;
+}
+
+.clear {
+  clear: both;
 }

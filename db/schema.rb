@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205001010) do
+ActiveRecord::Schema.define(version: 20160224170130) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160205001010) do
     t.integer  "step_number",                 default: 0
     t.integer  "letter_of_representation_id"
     t.integer  "payment_verification_id"
+    t.string   "disclosure_statement_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
