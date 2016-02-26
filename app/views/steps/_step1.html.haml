@@ -17,8 +17,8 @@
 
         %p.border-top
           = f.fields_for :service_agreement do |ff|
-            = ff.label :service_agreement, "Upload Service Agreement"
-            = ff.file_field :file
+            = f.label :service_agreement, "Upload Service Agreement"
+            = f.file_field :file
     .row
       .col-sm-8.col-centered.col-md-8.info-box
         %h3
@@ -29,32 +29,22 @@
           with the creditors and credit bureaus in regards to you credit file.
         %p.border-top
           = f.fields_for :letter_of_representation do |ff|
-            = ff.label :letter_of_representation, "Upload signed letter of representation"
-            = ff.file_field :file
+            = f.label :letter_of_representation, "Upload signed letter of representation"
+            = f.file_field :file
     .row
       .col-sm-8.col-centered.col-md-8.info-box
         %h3
           Consumer Credit File Rights Under State and Federal
         .sub-title.italics
-          This document explains your rights under the
-          // TODO add link to Fair Credit Reporting Act
-          pursuant to Federal and State .
-
-    .row
-      .col-sm-8.col-centered.col-md-8.info-box
-        %h3
-          Payment Verification
-        .sub-title.italics
-          Once you receive your invoice in regards to your credit file, please
-          upload your deposit slip/ receipt here. This will allow you to keep record
-          of all payments made to The Offices of White and Associates.
+          This document explains your rights under the pursuant to federal and state.
+          // todo add ftc link
         %p.border-top
-          = f.fields_for :payment_verification do |ff|
-            = ff.label :payment_verification, "Upload payment verification"
-            = ff.file_field :file
+          = f.fields_for :disclosure_statement do |ff|
+            = f.label :disclosure_statement, "Upload Signed Disclosure Statement"
+            = f.file_field :file
     .row
       .col-sm-8.col-centered.col-md-8.info-box.well
-        Please make sure all documents are notarized before uploading them. If files are not notarize you will not be able to proceed.
+        Please make sure all documents are notarized before uploading them. if files are not notarize you will not be able to proceed.
     .row
       .col-sm-8.col-centered.col-md-8.mt20.nolrp
-        = f.submit "Upload Documents", class: "btn btn-primary full-width"
+        = f.submit "upload documents", class: "btn btn-primary full-width"
