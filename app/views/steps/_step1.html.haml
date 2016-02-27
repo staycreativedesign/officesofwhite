@@ -17,8 +17,8 @@
 
         %p.border-top
           = f.fields_for :service_agreement do |ff|
-            = f.label :service_agreement, "Upload Service Agreement"
-            = f.file_field :file
+            = ff.label :service_agreement, "Upload Service Agreement"
+            = ff.file_field :file
     .row
       .col-sm-8.col-centered.col-md-8.info-box
         %h3
@@ -29,8 +29,8 @@
           with the creditors and credit bureaus in regards to you credit file.
         %p.border-top
           = f.fields_for :letter_of_representation do |ff|
-            = f.label :letter_of_representation, "Upload signed letter of representation"
-            = f.file_field :file
+            = ff.label :letter_of_representation, "Upload signed letter of representation"
+            = ff.file_field :file
     .row
       .col-sm-8.col-centered.col-md-8.info-box
         %h3
@@ -40,8 +40,8 @@
           // todo add ftc link
         %p.border-top
           = f.fields_for :disclosure_statement do |ff|
-            = f.label :disclosure_statement, "Upload Signed Disclosure Statement"
-            = f.file_field :file
+            = ff.label :disclosure_statement, "Upload Signed Disclosure Statement"
+            = ff.file_field :file
     .row
       .col-sm-8.col-centered.col-md-8.info-box.well
         Please make sure all documents are notarized before uploading them. if files are not notarize you will not be able to proceed.
