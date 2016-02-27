@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
     case self.find_current_step
     when 1
       User::STEP_ONE_DOCUMENTS
-    when 2
-      User::STEP_TWO_DOCUMENTS
+    when 3
+      User::STEP_THREE_DOCUMENTS
     end
   end
 
