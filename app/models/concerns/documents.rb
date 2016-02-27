@@ -9,5 +9,10 @@ module Documents
     belongs_to :service_agreement, class_name: "Document"
     accepts_nested_attributes_for(*STEP_ONE_DOCUMENTS)
 
+    STEP_THREE_DOCUMENTS = [:id_and_social, :first_utility, :second_utility]
+    belongs_to :id_and_social, class_name: "Document"
+    belongs_to :first_utility, class_name: "Document"
+    belongs_to :second_utility, class_name: "Document"
+    accepts_nested_attributes_for(*STEP_THREE_DOCUMENTS)
   end
 end
