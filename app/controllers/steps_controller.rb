@@ -41,7 +41,7 @@ class StepsController < ApplicationController
 
   def upload_documents
     if @user.update_attributes(step_params)
-      @user.update_attributes(step_number: 2)
+      @user.update_attributes(step_number: 0)
       redirect_to waiting_for_approval_path, alert: "Your documents were uploaded"
     else
       redirect_to steps_path, alert: "Some errors occured please re-upload your documents"
