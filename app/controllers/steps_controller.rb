@@ -44,7 +44,7 @@ class StepsController < ApplicationController
       @user.update_attributes(step_number: 2)
       redirect_to waiting_for_approval_path, alert: "Your documents were uploaded"
     else
-      redirect_to :index, alert: "Some errors occured please re-upload your documents"
+      redirect_to steps_path, alert: "Some errors occured please re-upload your documents"
     end
   end
 
@@ -56,10 +56,11 @@ class StepsController < ApplicationController
   def step_params
     hash = Hash.new
     @user.set_documents.each do |document|
-      hash[:"#{document}_attributes"] = [:file, :user_id]
-      binding.pry
+      hash[:"#{document}_attributes"] = [:file]
+
     end
-    params.require(:user).permit(hash)
+    add_user_id_to_hash = params.require(:user).permit(hash)
+    add_user_id_to_hash.transform_values { |attrs| attrs[:user_id] = current_user.id ; attrs }
   end
 
   def find_documents_for_step(step_documents)
