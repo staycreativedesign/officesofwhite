@@ -35,19 +35,24 @@ RSpec.describe StepsController, type: :controller do
     end
   end
 
-  describe "PATCH upload_documents" do
+  describe "PATCH #upload_documents" do
     let(:jim) { Fabricate :user,  approved: true, first_name: "jim", step_number: 1 }
 
     #FIX need to add user_id
     context "user is logged in" do
       before do
         set_current_user(jim)
-        patch :upload_documents, {"user" =>
-                                  { "letter_of_representation_attributes" => { "file" => Fabricate(:document) },
-                                    "service_agreement_attributes"     => { "file" => Fabricate(:document) },
-                                    "disclosure_statement_attributes"     => { "file" => Fabricate(:document) }
-                                  }
-                                 }
+        patch :upload_documents,
+          {"user" =>
+            {
+              "letter_of_representation_attributes" =>
+                { "file" => Fabricate(:document), "user_id" => jim.id },
+              "service_agreement_attributes" =>
+                { "file" => Fabricate(:document), "user_id" => jim.id },
+             "disclosure_statement_attributes" =>
+                { "file" => Fabricate(:document), "user_id" => jim.id }
+            }
+          }
       end
         it { is_expected.to redirect_to(waiting_for_approval_path) }
     end
