@@ -57,11 +57,13 @@ class StepsController < ApplicationController
     hash = Hash.new
     @user.set_documents.each do |document|
       hash[:"#{document}_attributes"] = [:file]
-
     end
+
     add_user_id_to_hash = params.require(:user).permit(hash)
     add_user_id_to_hash.transform_values { |attrs| attrs[:user_id] = current_user.id ; attrs }
+
   end
+
 
   def find_documents_for_step(step_documents)
     step_documents.each do |st|
