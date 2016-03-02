@@ -62,7 +62,7 @@ RSpec.describe StepsController, type: :controller do
     end
 
     context "step 3 documents" do
-      let(:attrs) { { step_number: 1 } }
+      let(:attrs) { { step_number: 3 } }
       let(:documents) do
         {
           "id_and_social_attributes"    => { "file" => Fabricate.build(:document), "user_id" => jim.id },
@@ -72,5 +72,17 @@ RSpec.describe StepsController, type: :controller do
       end
       it_behaves_like "waiting_for_approval"
     end
+
+    context "step 4 documents" do
+      let(:attrs) { { step_number: 4 } }
+      let(:documents) do
+        {
+          "police_affidavit_attributes" => { "file" => Fabricate.build(:document), "user_id" => jim.id },
+          "police_report_attributes"    => { "file" => Fabricate.build(:document), "user_id" => jim.id }
+        }
+      end
+      it_behaves_like "waiting_for_approval"
+    end
+
   end
 end

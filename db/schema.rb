@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227161715) do
+ActiveRecord::Schema.define(version: 20160302174219) do
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",                     null: false
     t.string   "file"
     t.boolean  "is_approved", default: false, null: false
     t.datetime "created_at",                  null: false
@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20160227161715) do
     t.integer  "payment_verification_id"
     t.integer  "disclosure_statement_id"
     t.integer  "service_agreement_id"
-    t.string   "id_and_social_id"
+    t.integer  "id_and_social_id"
     t.integer  "first_utility_id"
     t.integer  "second_utility_id"
+    t.integer  "police_report_id"
+    t.integer  "police_affidavit_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
