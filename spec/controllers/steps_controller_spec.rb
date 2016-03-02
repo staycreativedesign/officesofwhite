@@ -36,26 +36,49 @@ RSpec.describe StepsController, type: :controller do
   end
 
   describe "PATCH #upload_documents" do
-    let(:jim) { Fabricate :user,  approved: true, first_name: "jim", step_number: 1 }
+    let(:attrs) { {} }
+    let(:jim) { Fabricate :user, attrs.merge( approved: true, first_name: "jim" ) }
 
-    #FIX need to add user_id
-    context "user is logged in" do
+    context "user upload step 1 documents" do
+
+      let(:attrs) { { step_number: 1 } }
+
       before do
         set_current_user(jim)
         patch :upload_documents,
           {"user" =>
             {
               "letter_of_representation_attributes" =>
-                { "file" => Fabricate(:document), "user_id" => jim.id },
+              { "file" => Fabricate.build(:document), "user_id" => jim.id },
               "service_agreement_attributes" =>
-                { "file" => Fabricate(:document), "user_id" => jim.id },
+              { "file" => Fabricate.build(:document), "user_id" => jim.id },
              "disclosure_statement_attributes" =>
-                { "file" => Fabricate(:document), "user_id" => jim.id }
+              { "file" => Fabricate.build(:document), "user_id" => jim.id }
             }
           }
       end
         it { is_expected.to redirect_to(waiting_for_approval_path) }
     end
 
+    context "user uploads step 3 documents" do
+
+      let(:attrs) { { step_number: 3 } }
+
+      before do
+        set_current_user(jim)
+        patch :upload_documents,
+          {"user" =>
+            {
+              "id_and_social_attributes" =>
+              { "file" => Fabricate.build(:document), "user_id" => jim.id },
+              "first_utility_attributes" =>
+              { "file" => Fabricate.build(:document), "user_id" => jim.id },
+             "second_utility_attributes" =>
+              { "file" => Fabricate.build(:document), "user_id" => jim.id }
+            }
+          }
+      end
+        it { is_expected.to redirect_to(waiting_for_approval_path) }
+    end
   end
 end
