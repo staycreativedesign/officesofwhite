@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   before_validation :set_phone_numbers_and_ssn, on: :create
   has_secure_password
 
+  delegate :is_approved, to: :letter_of_representation, prefix: true
+  delegate :is_approved, to: :payment_verification, prefix: true
+  delegate :is_approved, to: :disclosure_statement, prefix: true
+  delegate :is_approved, to: :id_and_social, prefix: true
+  delegate :is_approved, to: :first_utility, prefix: true
+  delegate :is_approved, to: :second_utility, prefix: true
+  delegate :is_approved, to: :police_report, prefix: true
+  delegate :is_approved, to: :police_affidavit, prefix: true
 
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
                 :other_phone_number_1, :other_phone_number_2,
