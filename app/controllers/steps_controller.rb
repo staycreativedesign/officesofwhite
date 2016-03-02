@@ -15,8 +15,11 @@ class StepsController < ApplicationController
       step_three
     when 4
       step_four
+    when 5
+      step_five
     end
   end
+
   #REFACTOR
   def step_one
     @header = "bg-index"
@@ -41,6 +44,11 @@ class StepsController < ApplicationController
   end
 
   def step_four
+    @header = "bg-index"
+    find_documents_for_step(current_user.set_documents)
+  end
+
+  def step_five
     @header = "bg-index"
     find_documents_for_step(current_user.set_documents)
   end
@@ -71,4 +79,5 @@ class StepsController < ApplicationController
       end
     end
   end
+
 end
