@@ -15,8 +15,6 @@ class StepsController < ApplicationController
       step_three
     when 4
       step_four
-    when 5
-      step_five
     end
   end
 
