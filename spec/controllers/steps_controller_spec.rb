@@ -37,48 +37,40 @@ RSpec.describe StepsController, type: :controller do
 
   describe "PATCH #upload_documents" do
     let(:attrs) { {} }
+    let(:documents) { {} }
     let(:jim) { Fabricate :user, attrs.merge( approved: true, first_name: "jim" ) }
+    let(:user_docs) { { user: documents } }
 
-    context "user upload step 1 documents" do
+    subject(:response) { patch :upload_documents, user_docs }
 
-      let(:attrs) { { step_number: 1 } }
+    before { set_current_user(jim) }
 
-      before do
-        set_current_user(jim)
-        patch :upload_documents,
-          {"user" =>
-            {
-              "letter_of_representation_attributes" =>
-              { "file" => Fabricate.build(:document), "user_id" => jim.id },
-              "service_agreement_attributes" =>
-              { "file" => Fabricate.build(:document), "user_id" => jim.id },
-             "disclosure_statement_attributes" =>
-              { "file" => Fabricate.build(:document), "user_id" => jim.id }
-            }
-          }
-      end
-        it { is_expected.to redirect_to(waiting_for_approval_path) }
+    shared_examples "waiting_for_approval" do
+      it { is_expected.to redirect_to(waiting_for_approval_path) }
     end
 
-    context "user uploads step 3 documents" do
-
-      let(:attrs) { { step_number: 3 } }
-
-      before do
-        set_current_user(jim)
-        patch :upload_documents,
-          {"user" =>
-            {
-              "id_and_social_attributes" =>
-              { "file" => Fabricate.build(:document), "user_id" => jim.id },
-              "first_utility_attributes" =>
-              { "file" => Fabricate.build(:document), "user_id" => jim.id },
-             "second_utility_attributes" =>
-              { "file" => Fabricate.build(:document), "user_id" => jim.id }
-            }
-          }
+    context "step 1 documents" do
+      let(:attrs) { { step_number: 1 } }
+      let(:documents) do
+        {
+          "letter_of_representation_attributes" => { "file" => Fabricate.build(:document), "user_id" => jim.id },
+          "service_agreement_attributes"    => { "file" => Fabricate.build(:document), "user_id" => jim.id },
+          "disclosure_statement_attributes" => { "file" => Fabricate.build(:document), "user_id" => jim.id }
+        }
       end
-        it { is_expected.to redirect_to(waiting_for_approval_path) }
+      it_behaves_like "waiting_for_approval"
+    end
+
+    context "step 3 documents" do
+      let(:attrs) { { step_number: 1 } }
+      let(:documents) do
+        {
+          "id_and_social_attributes"    => { "file" => Fabricate.build(:document), "user_id" => jim.id },
+          "first_utility_attributes"    => { "file" => Fabricate.build(:document), "user_id" => jim.id },
+          "second_utility_attributes"   => { "file" => Fabricate.build(:document), "user_id" => jim.id }
+        }
+      end
+      it_behaves_like "waiting_for_approval"
     end
   end
 end
