@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   before_validation :set_phone_numbers_and_ssn, on: :create
   has_secure_password
+
+
   attr_accessor :phone_number_1, :phone_number_2, :phone_number_3,
                 :other_phone_number_1, :other_phone_number_2,
                 :other_phone_number_3, :ss_1, :ss_2, :ss_3, :employment_phone_1, :employment_phone_2, :employment_phone_3
@@ -23,17 +25,6 @@ class User < ActiveRecord::Base
   validates :approved, inclusion: { in: [true, false] }
   validates :admin, inclusion: { in: [true, false]  }
 
-  def set_documents
-    case self.find_current_step
-    when 1
-      User::STEP_ONE_DOCUMENTS
-    when 3
-      User::STEP_THREE_DOCUMENTS
-    when 4
-      User::STEP_FOUR_DOCUMENTS
-    end
-
-  end
 
   def check_if_documents_present
     documents = set_documents
@@ -51,6 +42,18 @@ class User < ActiveRecord::Base
   def find_current_step
     self.step_number
   end
+
+  def set_documents
+    case self.find_current_step
+    when 1
+      User::STEP_ONE_DOCUMENTS
+    when 3
+      User::STEP_THREE_DOCUMENTS
+    when 4
+      User::STEP_FOUR_DOCUMENTS
+    end
+  end
+
   protected
 
   def set_phone_numbers_and_ssn
@@ -64,5 +67,6 @@ class User < ActiveRecord::Base
   def join_numbers( num1, num2, num3)
     num1 + " - " +  num2 + " - " + num3
   end
+
 end
 
