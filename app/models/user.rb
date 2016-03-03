@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     self.step_number
   end
 
-  def set_documents
+  def find_documents_for_current_step
     case self.find_current_step
     when 1
       User::STEP_ONE_DOCUMENTS
@@ -63,10 +63,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  #when documents from step are all approved set the step number +1
-
   def are_step_documents_approved?
-
+    self.find_documents_for_current_step.all? { |doc| self.send(doc).is_approved  }
   end
 
   protected
