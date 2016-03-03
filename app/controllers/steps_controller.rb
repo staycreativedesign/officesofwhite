@@ -18,7 +18,7 @@ class StepsController < ApplicationController
     end
   end
 
-  #REFACTOR
+  #REFACTOR into one method
   def step_one
     @header = "bg-index"
     find_documents_for_step(current_user.set_documents)
