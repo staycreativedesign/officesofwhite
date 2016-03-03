@@ -21,7 +21,7 @@ class StepsController < ApplicationController
   #REFACTOR into one method
   def step_one
     @header = "bg-index"
-    find_documents_for_step(current_user.set_documents)
+    find_documents_for_step(current_user.find_documents_for_current_step)
     respond_to do |format|
       format.html
       format.pdf do
@@ -33,22 +33,22 @@ class StepsController < ApplicationController
 
   def step_two
     @header = "bg-index"
-    find_documents_for_step(current_user.set_documents)
+    find_documents_for_step(current_user.find_documents_for_current_step)
   end
 
   def step_three
     @header = "bg-index"
-    find_documents_for_step(current_user.set_documents)
+    find_documents_for_step(current_user.find_documents_for_current_step)
   end
 
   def step_four
     @header = "bg-index"
-    find_documents_for_step(current_user.set_documents)
+    find_documents_for_step(current_user.find_documents_for_current_step)
   end
 
   def step_five
     @header = "bg-index"
-    find_documents_for_step(current_user.set_documents)
+    find_documents_for_step(current_user.find_documents_for_current_step)
   end
 
   def upload_documents
@@ -62,7 +62,7 @@ class StepsController < ApplicationController
 
   def step_params
     hash = Hash.new
-    current_user.set_documents.each do |document|
+    current_user.find_documents_for_current_step.each do |document|
       hash[:"#{document}_attributes"] = [:file]
     end
     add_user_id_to_hash = params.require(:user).permit(hash)
