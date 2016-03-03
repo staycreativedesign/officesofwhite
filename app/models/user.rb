@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   delegate :is_approved, to: :letter_of_representation, prefix: true
+  delegate :is_approved, to: :service_agreement, prefix: true
   delegate :is_approved, to: :payment_verification, prefix: true
   delegate :is_approved, to: :disclosure_statement, prefix: true
   delegate :is_approved, to: :id_and_social, prefix: true
@@ -60,6 +61,12 @@ class User < ActiveRecord::Base
     when 4
       User::STEP_FOUR_DOCUMENTS
     end
+  end
+
+  #when documents from step are all approved set the step number +1
+
+  def are_step_documents_approved?
+
   end
 
   protected
