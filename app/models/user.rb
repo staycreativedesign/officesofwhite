@@ -63,8 +63,23 @@ class User < ActiveRecord::Base
     end
   end
 
-  def are_step_documents_approved?
-    self.find_documents_for_current_step.all? { |doc| self.send(doc).is_approved  }
+  def check_all_steps
+    all_steps = { "1" => User::STEP_ONE_DOCUMENTS, "3" => User::STEP_THREE_DOCUMENTS, "4" => User::STEP_FOUR_DOCUMENTS  }
+
+    all_steps.each do |number, docs|
+      begin
+        docs.each do |doc|
+          if self.send(doc).is_approved
+          else
+            break
+          end
+        end
+      rescue StandardError
+        puts number
+        self.update_attributes(step_number: number)
+        break
+      end
+    end
   end
 
   protected
