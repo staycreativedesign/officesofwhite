@@ -1,0 +1,7 @@
+%p
+  here is your email
+
+= @documents.each do |doc|
+  %p
+    Please download the document at this link
+    = link_to "Document", doc
