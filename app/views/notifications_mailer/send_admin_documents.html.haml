@@ -1,7 +1,19 @@
 %p
-  Hello these are the files
-
-- @docs.each do |doc|
+  = full_name(@user)
+  has uploaded some documents
+%hr
+- @files.each do |file|
   %p
-    = link_to "file", "#{doc}"
+    = link_to file_name(file), file_location(file)
+%p
+  = link_to "Click here for administrator panel", login_path
+%p
+  Quick Contact Information
+  %ul
+    %li
+      = full_name(@user)
+    %li
+      = @user.email
+    %li
+      = @user.phone_number
 
