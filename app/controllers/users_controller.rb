@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      NotificationsMailer.delay.new_user_registration(@user)
+      NotificationsMailer.new_user_registration(@user)
       redirect_to waiting_for_approval_path
     else
       render :new
