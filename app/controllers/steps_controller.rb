@@ -54,6 +54,7 @@ class StepsController < ApplicationController
   def upload_documents
     if current_user.update_attributes(step_params)
       current_user.update_attributes(step_number: 0)
+      send_docs
       redirect_to waiting_for_approval_path, alert: "Your documents were uploaded"
     else
       redirect_to steps_path, alert: "Some errors occured please re-upload your documents"
@@ -69,6 +70,13 @@ class StepsController < ApplicationController
     add_user_id_to_hash.transform_values { |attrs| attrs[:user_id] = current_user.id ; attrs }
   end
 
+  def send_docs
+      @email_docs = []
+      params["user"].each do |file|
+        @email_docs << file[1]["file"]
+      end
+      NotificationsMailer.send_admin_documents(@email_docs, current_user.first_name).deliver_now
+  end
 
   def find_documents_for_step(step_documents)
     step_documents.each do |st|
@@ -77,5 +85,4 @@ class StepsController < ApplicationController
       end
     end
   end
-
 end
