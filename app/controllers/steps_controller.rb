@@ -71,6 +71,7 @@ class StepsController < ApplicationController
   end
 
   def send_docs
+      #TODO - add file name to @email docs
       @email_docs = []
       params["user"].each do |file|
         @email_docs << file[1]["file"]
