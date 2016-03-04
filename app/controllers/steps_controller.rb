@@ -71,12 +71,11 @@ class StepsController < ApplicationController
   end
 
   def send_docs
-      #TODO - add file name to @email docs
-      @email_docs = []
-      params["user"].each do |file|
-        @email_docs << file[1]["file"]
-      end
-      NotificationsMailer.send_admin_documents(@email_docs, current_user.first_name).deliver_now
+    @files = []
+    params["user"].each do |file|
+      @files << file
+    end
+    NotificationsMailer.send_admin_documents(@files, current_user).deliver_now
   end
 
   def find_documents_for_step(step_documents)
