@@ -63,18 +63,14 @@ class StepsController < ApplicationController
 
   def step_params
     hash = Hash.new
-    current_user.find_documents_for_current_step.each do |document|
-      hash[:"#{document}_attributes"] = [:file]
-    end
+    current_user.find_documents_for_current_step.each { |document| hash[:"#{document}_attributes"] = [:file] }
     add_user_id_to_hash = params.require(:user).permit(hash)
     add_user_id_to_hash.transform_values { |attrs| attrs[:user_id] = current_user.id ; attrs }
   end
 
   def send_docs
     @files = []
-    params["user"].each do |file|
-      @files << file
-    end
+    params["user"].each { |file| @files << file }
     NotificationsMailer.send_admin_documents(@files, current_user).deliver_now
   end
 
