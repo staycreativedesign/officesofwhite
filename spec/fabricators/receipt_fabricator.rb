@@ -1,0 +1,3 @@
+Fabricator(:receipt) do
+
+end

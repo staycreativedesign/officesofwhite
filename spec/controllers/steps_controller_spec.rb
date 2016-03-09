@@ -7,7 +7,7 @@ RSpec.describe StepsController, type: :controller do
 
     let(:approved) { nil }
     let(:attrs) { {} }
-    let(:jim) { Fabricate :user, attrs.merge( approved: approved, first_name: "jim"  )  }
+    let(:jim) { Fabricate :user, attrs.merge( approved: approved, first_name: "Jim"  )  }
 
     context "user is logged in" do
       before { set_current_user(jim) }
@@ -38,7 +38,7 @@ RSpec.describe StepsController, type: :controller do
   describe "PATCH #upload_documents" do
     let(:attrs) { {} }
     let(:documents) { {} }
-    let(:jim) { Fabricate :user, attrs.merge( approved: true, first_name: "jim" ) }
+    let(:jim) { Fabricate :user, attrs.merge( approved: true, first_name: "Jim" ) }
     let(:user_docs) { { user: documents } }
 
     subject(:response) { patch :upload_documents, user_docs }

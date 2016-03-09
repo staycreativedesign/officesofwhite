@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include Documents
 
   before_validation :set_phone_numbers_and_ssn, on: :create
+  has_many :receipts
   has_secure_password
 
   delegate :is_approved, to: :letter_of_representation, prefix: true

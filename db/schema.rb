@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302174219) do
+ActiveRecord::Schema.define(version: 20160307235841) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id",                     null: false
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 20160302174219) do
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
+
+  create_table "receipt_items", force: :cascade do |t|
+    t.integer "receipt_id"
+    t.string  "name"
+    t.string  "value"
+    t.boolean "paid",       default: false, null: false
+  end
+
+  add_index "receipt_items", ["receipt_id"], name: "index_receipt_items_on_receipt_id"
+
+  create_table "receipts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "receipts", ["user_id"], name: "index_receipts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                       default: "",    null: false

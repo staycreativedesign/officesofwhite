@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users do
+    resources :receipts, only: [:index]
+  end
+
+  namespace :admin do
+    resources :receipts
   end
 
   get '/steps' => 'steps#index'
