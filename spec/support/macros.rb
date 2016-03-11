@@ -17,6 +17,12 @@ def sign_in(a_user=nil)
   fill_in "Password", with: user.password
   click_button "Log in"
 end
+
 def clear_current_user
   session[:user_id] = nil
+end
+
+def create_receipt(a_user)
+  user = a_user || Fabricate(:user)
+  Fabricate(:receipt, user_id: user.id)
 end
