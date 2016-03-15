@@ -33,12 +33,14 @@ class StepsController < ApplicationController
 
   def step_two
     @header = "bg-index"
-    find_documents_for_step(current_user.find_documents_for_current_step)
   end
-
   def step_three
     @header = "bg-index"
     find_documents_for_step(current_user.find_documents_for_current_step)
+  end
+
+  def step_two
+    @header = "bg-index"
   end
 
   def step_four
