@@ -14,10 +14,12 @@
             In order to remain a client of The Offices of White and Associates, the amount owed must be paid at Bank of America in the account listed below, or you can use the other option shown here for a small service fee.
           %p
             As stated in the Service Agreement, clients will be given a five (5) day grace period in order to pay the amount described on the invoice once it is due. Any invoices that remain unpaid after this allotted timeframe will be considered delinquent and handled accordingly.
-          %h6
+        %p
+          %h3.mt40
             Payment Options
           %p
-            Wire transfer
+            %b
+              Wire transfer
           %p
             Bank of America
             %br
@@ -25,6 +27,7 @@
             %br
             Routing:
             %b 111000025
+            %br
             Account:
             %b 488045182084
           %p
@@ -42,8 +45,9 @@
             %th Amount Due
             %th View Invoice
             %th Pay by PayPal
-            %th
+            %th Upload Proof of Payment
+            %th Status
           %tr
             - if current_user.receipts.blank?
-              %td{:colspan => "4", :class => "text-center"}
+              %td{:colspan => "5", :class => "text-center"}
                 %i Currently no receipts

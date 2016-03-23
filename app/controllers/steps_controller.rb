@@ -63,6 +63,13 @@ class StepsController < ApplicationController
     end
   end
 
+  def approve_initial_receipt
+    # Approval initial recept to pass to step 3
+  end
+
+  def step_two
+    @header = "bg-index"
+  end
   def step_params
     hash = Hash.new
     current_user.find_documents_for_current_step.each { |document| hash[:"#{document}_attributes"] = [:file] }
