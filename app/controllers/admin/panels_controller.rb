@@ -1,0 +1,3 @@
+class Admin::PanelsController
+
+end
