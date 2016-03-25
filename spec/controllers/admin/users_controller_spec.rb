@@ -19,9 +19,10 @@ RSpec.describe Admin::UsersController, type: :controller do
 
         it "assigns @users" do
           make_request
-          expect(assigns[:users]).to eq [jim]
+          users = assigns[:users]
+          expect(users.count).to eql 1
+          expect(users.first.id).to eql jim.id
         end
-        # check to to see if @users is assigned to all users
       end
 
 
