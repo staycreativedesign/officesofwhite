@@ -8,6 +8,7 @@ gem 'sidekiq'
 gem 'rails', '4.2.3'
 gem 'database_cleaner'
 gem 'wicked_pdf'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'wkhtmltopdf-binary'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
