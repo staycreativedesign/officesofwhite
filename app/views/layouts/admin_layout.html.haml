@@ -10,6 +10,13 @@
     = csrf_meta_tags
   %body
     #admin-wrapper
+    .container-fluid
+      .row.admin-nav
+        .col-md-3.text-uppercase
+          Offices of White and Associates
+        .col-md-9.text-right.text-uppercase
+          %span.glyphicon.glyphicon-off
+          Log out
       - flash.each do |key, value|
         = content_tag :div, value, class: "flash #{key}"
       = yield
