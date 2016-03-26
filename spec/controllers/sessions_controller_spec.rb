@@ -25,7 +25,7 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
 
-    context "width invalid credentials" do
+    context "with invalid credentials" do
       before { post :create, email: jim.email, password: "wrong" }
       it { is_expected.to render_template(:new) }
     end
