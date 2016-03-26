@@ -1,0 +1,36 @@
+.col-md-10
+  .row
+    .col-md-3
+      .widget
+        %p
+          Total Accounts
+        %p
+          %h2
+            = User.all.count
+      .widget-box
+        =  time_ago_in_words(@users.last.created_at)
+        Since a new client
+    .col-md-3
+      .widget
+        %p
+          Total Accounts
+        %p
+          %h2
+            = User.all.count
+      .widget-box
+        =  time_ago_in_words(@users.last.created_at)
+        Since a new client
+    .col-md-3
+      .widget
+        %p
+          Total Accounts
+        %p
+          %h2
+            = User.all.count
+      .widget-box
+        =  time_ago_in_words(@users.last.created_at)
+        Since a new client
+  .row
+    .col-md-12
+      %h1
+        Hello
