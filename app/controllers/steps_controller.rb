@@ -8,19 +8,18 @@ class StepsController < ApplicationController
     when 0
       redirect_to waiting_for_approval_path
     when 1
-      step_one
+      step_1
     when 2
-      step_two
+      step_2
     when 3
-      step_three
+      step_3
     when 4
-      step_four
+      step_4
     end
   end
 
-  #REFACTOR into one method
-  def step_one
-    @header = "bg-index"
+  def step_1
+    @header = "bg-step_1"
     find_documents_for_step(current_user.find_documents_for_current_step)
     respond_to do |format|
       format.html
@@ -31,25 +30,16 @@ class StepsController < ApplicationController
     end
   end
 
-  def step_two
-    @header = "bg-index"
+  def step_2
+    @header = "bg-step_2"
   end
-  def step_three
-    @header = "bg-index"
+  def step_3
+    @header = "bg-step_3"
     find_documents_for_step(current_user.find_documents_for_current_step)
   end
 
-  def step_two
-    @header = "bg-index"
-  end
-
-  def step_four
-    @header = "bg-index"
-    find_documents_for_step(current_user.find_documents_for_current_step)
-  end
-
-  def step_five
-    @header = "bg-index"
+  def step_4
+    @header = "bg-step4"
     find_documents_for_step(current_user.find_documents_for_current_step)
   end
 
@@ -63,24 +53,23 @@ class StepsController < ApplicationController
     end
   end
 
-  def approve_initial_receipt
-    # Approval initial recept to pass to step 3
-  end
 
-  def step_two
-    @header = "bg-index"
-  end
-  def step_params
-    hash = Hash.new
-    current_user.find_documents_for_current_step.each { |document| hash[:"#{document}_attributes"] = [:file] }
-    add_user_id_to_hash = params.require(:user).permit(hash)
-    add_user_id_to_hash.transform_values { |attrs| attrs[:user_id] = current_user.id ; attrs }
-  end
+
+
+
+  private
 
   def send_docs
     @files = []
     params["user"].each { |file| @files << file }
     NotificationsMailer.send_admin_documents(@files, current_user).deliver_now
+  end
+
+  def step_params
+    hash = Hash.new
+    current_user.find_documents_for_current_step.each { |document| hash[:"#{document}_attributes"] = [:file] }
+    add_user_id_to_hash = params.require(:user).permit(hash)
+    add_user_id_to_hash.transform_values { |attrs| attrs[:user_id] = current_user.id ; attrs }
   end
 
   def find_documents_for_step(step_documents)
@@ -90,4 +79,9 @@ class StepsController < ApplicationController
       end
     end
   end
+
+  def approve_initial_receipt
+    # Approval initial recept to pass to step 3
+  end
+
 end
