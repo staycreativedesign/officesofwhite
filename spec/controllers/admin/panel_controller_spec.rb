@@ -22,15 +22,21 @@ RSpec.describe Admin::PanelController, type: :controller do
       end
 
       it "assigns @total_payments_received" do
-        2.times { create_paid_receipt_item(jim, jim.receipts.first, "20.00", true) }
+        2.times { create_paid_receipt_item(jim, jim.receipts.first, "20.00") }
         make_request
         total_payments_received = assigns[:total_payments_received]
-        binding.pry
         expect(ReceiptItem.count).to eql 2
         expect(total_payments_received).to eql 40.00
       end
 
-      it "assigns @total_payments_pending"
+      it "assigns @total_pending_payments" do
+        2.times { create_unpaid_receipt_item(jim, jim.receipts.first, "10.00") }
+        make_request
+        total_pending_payments = assigns[:total_pending_payments]
+        expect(ReceiptItem.count).to eql 2
+        expect(total_pending_payments).to eql 20.00
+      end
+
     end
 
     context "user is not admin" do
