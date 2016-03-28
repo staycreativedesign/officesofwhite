@@ -27,14 +27,20 @@ def create_receipt(a_user=nil)
   Fabricate(:receipt, user_id: user.id)
 end
 
-def create_unpaid_receipt_item(a_user=nil, a_receipt=nil)
+def create_unpaid_receipt_item(a_user=nil, a_receipt=nil, value=nil)
   user = a_user || Fabricate(:user)
   receipt = a_receipt || Fabricate(:receipt, user_id: user.id)
-  Fabricate(:receipt_item, receipt_id: receipt.id )
+  Fabricate(:receipt_item, receipt_id: receipt.id, value: value )
 end
 
-def create_paid_receipt_item(a_user=nil, a_receipt=nil)
+def create_receipt_item(a_user=nil, a_receipt=nil, value=nil)
   user = a_user || Fabricate(:user)
   receipt = a_receipt || Fabricate(:receipt, user_id: user.id)
-  Fabricate(:receipt_item, receipt_id: receipt.id, paid: true )
+  Fabricate(:receipt_item, receipt_id: receipt.id, value: value )
+end
+
+def create_paid_receipt_item(a_user=nil, a_receipt=nil, value=nil)
+  user = a_user || Fabricate(:user)
+  receipt = a_receipt || Fabricate(:receipt, user_id: user.id)
+  Fabricate(:receipt_item, receipt_id: receipt.id, value: value, paid: true )
 end
