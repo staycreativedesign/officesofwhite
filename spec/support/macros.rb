@@ -26,3 +26,9 @@ def create_receipt(a_user)
   user = a_user || Fabricate(:user)
   Fabricate(:receipt, user_id: user.id)
 end
+
+def create_receipt_item(a_user, a_receipt)
+  user = a_user || Fabricate(:user)
+  receipt = a_receipt || Fabricate(:receipt, user_id: user.id)
+  Fabricate(:receipt_item, receipt_id: receipt.id, paid: true)
+end
