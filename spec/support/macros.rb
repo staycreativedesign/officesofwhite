@@ -22,13 +22,19 @@ def clear_current_user
   session[:user_id] = nil
 end
 
-def create_receipt(a_user)
+def create_receipt(a_user=nil)
   user = a_user || Fabricate(:user)
   Fabricate(:receipt, user_id: user.id)
 end
 
-def create_receipt_item(a_user, a_receipt)
+def create_unpaid_receipt_item(a_user=nil, a_receipt=nil)
   user = a_user || Fabricate(:user)
   receipt = a_receipt || Fabricate(:receipt, user_id: user.id)
-  Fabricate(:receipt_item, receipt_id: receipt.id, paid: true)
+  Fabricate(:receipt_item, receipt_id: receipt.id )
+end
+
+def create_paid_receipt_item(a_user=nil, a_receipt=nil)
+  user = a_user || Fabricate(:user)
+  receipt = a_receipt || Fabricate(:receipt, user_id: user.id)
+  Fabricate(:receipt_item, receipt_id: receipt.id, paid: true )
 end
