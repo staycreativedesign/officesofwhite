@@ -53,14 +53,14 @@ class User < ActiveRecord::Base
   end
 
   def check_all_steps
-    all_steps = { "1" => User::STEP_ONE_DOCUMENTS, "3" => User::STEP_THREE_DOCUMENTS, "4" => User::STEP_FOUR_DOCUMENTS  }
+    all_steps = { '1' => User::STEP_ONE_DOCUMENTS, '3' => User::STEP_THREE_DOCUMENTS, '4' => User::STEP_FOUR_DOCUMENTS  }
 
     all_steps.each do |number, step|
       step.each do |doc|
         document = self.send(doc)
         if !document.is_approved? || document.nil?
           self.update_attributes(step_number: number)
-          return
+          break
         end
       end
     end
@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
     self.social_security = join_numbers(ss_1, ss_2, ss_3)
   end
 
-  def join_numbers( num1, num2, num3)
-    num1 + " - " +  num2 + " - " + num3
+  def join_numbers(num1, num2, num3)
+    num1 + ' - ' + num2 + ' - ' + num3
   end
 end
