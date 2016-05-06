@@ -13,10 +13,10 @@
     .col-md-3
       .widget
         %p
-          Total Accounts
+          Total Accounts Value
         %p
           %h2
-            = User.all.count
+            = @users.count
       .widget-box
         =  time_ago_in_words(@users.last.created_at)
         Since a new client

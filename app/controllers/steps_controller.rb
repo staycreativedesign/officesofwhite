@@ -39,7 +39,7 @@ class StepsController < ApplicationController
   end
 
   def step_4
-    @header = "bg-step4"
+    @header = "bg-step_4"
     find_documents_for_step(current_user.find_documents_for_current_step)
   end
 

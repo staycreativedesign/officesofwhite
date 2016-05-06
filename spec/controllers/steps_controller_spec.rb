@@ -7,7 +7,7 @@ RSpec.describe StepsController, type: :controller do
 
     let(:approved) { nil }
     let(:attrs) { {} }
-    let(:jim) { Fabricate :user, attrs.merge( approved: approved, first_name: "Jim"  )  }
+    let(:jim) { Fabricate :user, attrs.merge( approved: approved, first_name: "Jim" )  }
 
     context "user is logged in" do
       before { set_current_user(jim) }

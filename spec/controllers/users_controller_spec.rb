@@ -10,11 +10,11 @@ RSpec.describe UsersController, type: :controller do
         expect(User.count).to equal(1)
       end
       it "sends an email" do
-       expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(2)
+        expect(Sidekiq::Extensions::DelayedMailer.jobs.count).to eq(0)
       end
 
       it "formats the phone number" do
-       expect(User.last.phone_number).to eq("305 - 619 - 3724")
+        expect(User.last.phone_number).to eq("305 - 619 - 3724")
       end
     end
     context "user does not fill out form correctly" do
