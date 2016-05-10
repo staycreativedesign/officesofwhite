@@ -1,0 +1,187 @@
+.col-md-6.admin-user-show
+  .row
+    .col-md-12
+      %h4.text-uppercase
+        = @user.first_name
+        = @user.try(:middle_name)
+        = @user.last_name
+  .row
+    .col-md-12.border
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} Contact Information
+        %tbody
+          %tr
+            %td Suffix
+            %td.text-right
+              = @user.suffix
+          %tr
+            %td First name
+            %td.text-right
+              = @user.first_name
+          - if @user.middle_name.present?
+            %tr
+              %td Middle name
+              %td.text-right
+                = @user.middle_name
+          %tr
+            %td Last name
+            %td.text-right
+              = @user.last_name
+          %tr
+            %td Email
+            %td.text-right
+              = @user.email
+          %tr
+            %td Phone number
+            %td.text-right
+              = @user.phone_number
+          - if @user.other_number.present?
+            %tr
+              %td Other number
+              %td.text-right
+                = @user.other_number
+
+  .row
+    .col-md-12.border
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "3"} Personal Information
+        %tbody
+          %tr
+            %td Date of Birth
+            %td.text-right
+              = @user.dob.to_formatted_s(:long_ordinal)
+          %tr
+            %td Social Security
+            %td.text-right
+              = @user.social_security
+          %tr
+            %td Driver License
+            %td.text-right
+              = @user.driver_license
+          %tr
+            %td Address
+            %td.text-right
+              = @user.home_address
+              \-
+              = @user.city
+              \-
+              = @user.state
+              \-
+              = @user.zipcode
+          %tr
+            %td Time at address
+            %td.text-right
+              Months:
+              = @user.time_at_address_months
+              Years:
+              = @user.time_at_address_years
+          %tr
+            %td Residence type
+            %td.text-right
+              = @user.residence_type
+          %tr
+            %td Household payment
+            %td.text-right
+              $
+              = @user.household_payment
+
+  .row
+    .col-md-12.border
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} Employment Information
+        %tbody
+          %tr
+            %td Employer name
+            %td.text-right
+              = @user.employer_name
+          %tr
+            %td Occupation
+            %td.text-right
+              = @user.occupation
+          %tr
+            %td Employer Address
+            %td.text-right
+              = @user.employment_address
+              \-
+              = @user.employment_city
+              \-
+              = @user.employment_state
+              \-
+              = @user.employment_zipcode
+          %tr
+            %td Time at employment
+            %td.text-right
+              Months:
+              = @user.employment_months
+              Years:
+              = @user.employment_years
+          %tr
+            %td Occupation
+            %td.text-right
+              = @user.occupation
+  .row
+    .col-md-12.border
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} Credit login
+        %tbody
+          %tr
+            %td Login name
+            %td.text-right
+              = @user.credit_login
+          %tr
+            %td Login password
+            %td.text-right
+              = @user.credit_password
+          %tr
+            %td Security answer
+            %td.text-right
+              = @user.credit_security_answer
+          %tr
+            %td Mother date of birth
+            %td.text-right
+              = @user.credit_mother_dob.to_formatted_s(:long_ordinal)
+  .row
+    .col-md-12.border
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} Registration ip
+        %tbody
+          %tr
+            %td Registration ip
+            %td.text-right
+              = @user.registration_ip
+  .row
+    .col-md-12.border
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} Referred by
+        %tbody
+          %tr
+            %td Referred by
+            %td.text-right
+              = @user.try(:referred_by)
+.col-md-4.admin-user-show
+  .row
+    .col-md-12
+      %h4.text-uppercase
+        \&nbsp;
+.col-md-4
+  %table.table.table-condensed
+    %thead
+      %tr.text-uppercase
+        %th{:colspan => "4"} Employment Information
+    %tbody
+      %tr
+        %td Employer name
+        %td.text-right
+          = @user.employer_name
