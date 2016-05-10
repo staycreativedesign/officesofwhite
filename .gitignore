@@ -21,6 +21,8 @@
 !/log/.keep
 /tmp/*
 tmp/*
+log/*
+app/assets/stylesheets/.sass-cache/*
 *.cache
 /public/uploads
 
