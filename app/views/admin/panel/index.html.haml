@@ -35,7 +35,7 @@
         %tr
           - User.all.each do |user|
             %td
-              = link_to user_path(user) do
+              = link_to admin_user_path(user) do
                 = user.first_name
                 = user.last_name
             %td
