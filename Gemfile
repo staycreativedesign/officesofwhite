@@ -11,6 +11,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'money-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 3.2'
 
