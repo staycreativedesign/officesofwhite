@@ -53,7 +53,9 @@ class User < ActiveRecord::Base
   end
 
   def check_all_steps
-    all_steps = { '1' => User::STEP_ONE_DOCUMENTS, '3' => User::STEP_THREE_DOCUMENTS, '4' => User::STEP_FOUR_DOCUMENTS  }
+    all_steps = { '1' => User::STEP_ONE_DOCUMENTS,
+                  '3' => User::STEP_THREE_DOCUMENTS,
+                  '4' => User::STEP_FOUR_DOCUMENTS }
 
     all_steps.each do |number, step|
       step.each do |doc|
