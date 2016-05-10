@@ -1,6 +1,6 @@
 .col-md-10
   .row
-    .col-md-3
+    .col-md-3.pull-right
       .widget
         %p
           Total Accounts
@@ -10,27 +10,37 @@
       .widget-box
         =  time_ago_in_words(@users.last.created_at)
         Since a new client
-    .col-md-3
+    .col-md-3.pull-right
       .widget
         %p
-          Total Accounts Value
+          Total Pending payments
         %p
           %h2
-            = @users.count
+            = humanized_money_with_symbol @total_pending_payments
       .widget-box
-        =  time_ago_in_words(@users.last.created_at)
-        Since a new client
-    .col-md-3
-      .widget
-        %p
-          Total Accounts
-        %p
-          %h2
-            = User.all.count
-      .widget-box
-        =  time_ago_in_words(@users.last.created_at)
-        Since a new client
-  .row
+        =  humanized_money_with_symbol @total_payments_received
+        Total payments received
+  .row.mt20
     .col-md-12
-      %h1
-        Hello
+      %table.table.table-striped.table-hover.border-box
+        %tr.text-uppercase
+          %th
+            Client name
+          %th
+            Email
+          %th
+            Phone
+          %th.text-center
+            Step
+        %tr
+          - User.all.each do |user|
+            %td
+              = link_to user_path(user) do
+                = user.first_name
+                = user.last_name
+            %td
+              = user.email
+            %td
+              = user.phone_number
+            %td.text-center
+              = user.step_number
