@@ -1,25 +1,4 @@
 .col-md-10
-  .row
-    .col-md-3.pull-right
-      .widget
-        %p
-          Total Accounts
-        %p
-          %h2
-            = User.all.count
-      .widget-box
-        =  time_ago_in_words(@users.last.created_at)
-        Since a new client
-    .col-md-3.pull-right
-      .widget
-        %p
-          Total Pending payments
-        %p
-          %h2
-            = humanized_money_with_symbol @total_pending_payments
-      .widget-box
-        =  humanized_money_with_symbol @total_payments_received
-        Total payments received
   .row.mt20
     .col-md-12
       %table.table.table-striped.table-hover.border-box
