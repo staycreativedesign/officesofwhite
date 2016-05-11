@@ -21,14 +21,26 @@
           .col-md-12
         .row
           .col-md-2
-            .widget.flat-green
-              %p
-                Total Accounts
-              %p
-                %h2
-                  \&nbsp;
-            .widget-box
-              \&nbsp;
+            %table.table.table-hover.mt20
+              %tr.text-uppercase.border-box
+                %th
+                  Menu
+              %tr
+                %td
+                  %i.glyphicon.glyphicon-plus.mr5
+                  Office Locations
+              %tr
+                %td
+                  %i.glyphicon.glyphicon-plus.mr5
+                  View Archived Clients
+            %table.table.table-hover.mt20
+              %tr.text-uppercase.border-box
+                %th
+                  Client Options
+              %tr
+                %td
+                  %i.glyphicon.glyphicon-plus.mr5
+                  Archive Client
           = yield
 - flash.each do |key, value|
   = content_tag :div, value, class: "flash #{key}"
