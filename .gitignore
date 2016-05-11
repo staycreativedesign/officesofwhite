@@ -32,4 +32,3 @@ app/assets/stylesheets/.sass-cache/*
 
 # Ignore application configuration
 /config/application.yml
-*.rb
