@@ -175,13 +175,45 @@
     .col-md-12
       %h4.text-uppercase
         \&nbsp;
-.col-md-4
-  %table.table.table-condensed
-    %thead
-      %tr.text-uppercase
-        %th{:colspan => "4"} Employment Information
-    %tbody
-      %tr
-        %td Employer name
-        %td.text-right
-          = @user.employer_name
+  .row
+    .col-md-12
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} contract information
+        %tbody
+          %tr
+            %td.text-left
+              Pro bono
+            %td.text-right
+              %i.glyphicon.glyphicon-ok.ml10.flat-green
+              %i.glyphicon.glyphicon-remove.ml10.flat-red
+          %tr
+            %td.text-left
+              Set Office Location
+            %td.text-right
+              = select_tag("hello")
+          %tr
+            %td.text-left
+              Set Total Price
+            %td.text-right
+              = text_field_tag("hello")
+          %tr
+            %td.text-left
+              Set Initial Deposit
+            %td.text-right
+              = text_field_tag("hello")
+  .row
+    .col-md-12
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"} Initial Registration
+        %tbody
+          %tr
+            %td.text-left
+              Registration Information
+            %td.text-right
+              %i.glyphicon.glyphicon-file.ml10
+              %i.glyphicon.glyphicon-ok.ml10.flat-green
+              %i.glyphicon.glyphicon-remove.ml10.flat-red
