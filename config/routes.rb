@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :panel, only: [:index]
     resources :receipts
     resources :users
+    resources :office_locations
   end
 
   get '/steps' => 'steps#index'
