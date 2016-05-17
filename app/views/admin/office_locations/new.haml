@@ -44,7 +44,7 @@
       .col-md-2.field-option.bold
         Office Email:
       .col-md-5.field-option
-        = f.text_field :name
+        = f.text_field :email
     .row.mt20
       .col-md-12
-        = f.submit 'Create new Office Location', class: "text-center full-width"
+        = f.submit 'Create new Office Location', class: "text-center full-width", id: "submit"
