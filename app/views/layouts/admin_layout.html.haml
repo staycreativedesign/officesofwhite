@@ -27,12 +27,22 @@
                   Menu
               %tr
                 %td
-                  %i.glyphicon.glyphicon-plus.mr5
-                  Office Locations
+                  = link_to admin_office_locations_path, id: "office" do
+                    %i.glyphicon.glyphicon-plus.mr5
+                    Office Locations
               %tr
                 %td
                   %i.glyphicon.glyphicon-plus.mr5
                   View Archived Clients
+            %table.table.table-hover.mt20
+              %tr.text-uppercase.border-box
+                %th
+                  Office Location
+              %tr
+                %td
+                  = link_to new_admin_office_location_path, id: "add-office" do
+                    %i.glyphicon.glyphicon-plus.mr5
+                    Add new Location
             %table.table.table-hover.mt20
               %tr.text-uppercase.border-box
                 %th
