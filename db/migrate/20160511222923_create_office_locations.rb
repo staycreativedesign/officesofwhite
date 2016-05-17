@@ -7,7 +7,6 @@ class CreateOfficeLocations < ActiveRecord::Migration
       t.string :state
       t.string :zipcode
       t.string :email
-      t.belongs_to :user, index: true
       t.timestamps
     end
   end

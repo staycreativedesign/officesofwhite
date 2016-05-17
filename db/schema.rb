@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511222923) do
+ActiveRecord::Schema.define(version: 20160516200000) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id",                     null: false
@@ -30,12 +30,9 @@ ActiveRecord::Schema.define(version: 20160511222923) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "email"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "office_locations", ["user_id"], name: "index_office_locations_on_user_id"
 
   create_table "receipt_items", force: :cascade do |t|
     t.integer "receipt_id"
@@ -113,6 +110,8 @@ ActiveRecord::Schema.define(version: 20160511222923) do
     t.integer  "second_utility_id"
     t.integer  "police_report_id"
     t.integer  "police_affidavit_id"
+    t.boolean  "pro_bono",                    default: false, null: false
+    t.integer  "office_location_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

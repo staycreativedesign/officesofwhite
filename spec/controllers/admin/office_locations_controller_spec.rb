@@ -19,12 +19,30 @@ RSpec.describe Admin::OfficeLocationsController do
     end
   end
 
+  describe 'GET new' do
+    render_views
+    subject(:response) { get :new }
+    let(:admin) { nil }
+    let(:attrs) { {} }
+    let(:jim) { Fabricate :user, attrs.merge(admin: admin) }
+
+    context "user is logged in" do
+
+      before { set_current_user(jim) }
+
+      context "user is admin" do
+        let(:admin) { true }
+        it { is_expected.to render_template :new }
+      end
+    end
+  end
+
   describe 'POST create' do
     render_views
     let(:admin) { nil }
     let(:attrs) { {} }
     let(:jim) { Fabricate :user, attrs.merge(admin: admin) }
-    let(:office) { Fabricate :office_location, user_id: jim.id }
+    let(:office) { Fabricate.attributes_for(:office_location) }
     subject(:response) { post :create, office_location: office }
     subject(:make_request) { post :create, office_location: office }
 
@@ -40,11 +58,6 @@ RSpec.describe Admin::OfficeLocationsController do
           it "adds another office location" do
             make_request
             expect(OfficeLocation.count).to eql 1
-          end
-
-          it "assign office location to jim" do
-            make_request
-            expect(office.user_id).to eq jim.id
           end
         end
       end
