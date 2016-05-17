@@ -1,16 +1,21 @@
 require "rails_helper"
 
 RSpec.describe Admin::OfficeLocationsController do
+  let(:admin) { false }
+  let(:attrs) { {} }
+  let(:admin_user) { Fabricate :user, attrs.merge( admin: admin, first_name: "Bob" ) }
+  let(:office) { Fabricate(:office_location) }
+
   describe 'GET index' do
     render_views
     subject(:response) { get :index }
 
     let(:admin) { nil }
     let(:attrs) { {} }
-    let(:jim) { Fabricate :user, attrs.merge(admin: admin) }
+    let(:admin_user) { Fabricate :user, attrs.merge(admin: admin) }
 
     context "user is logged in" do
-      before { set_current_user(jim) }
+      before { set_current_user(admin_user) }
 
       context "user is admin" do
         let(:admin) { true }
@@ -22,13 +27,10 @@ RSpec.describe Admin::OfficeLocationsController do
   describe 'GET new' do
     render_views
     subject(:response) { get :new }
-    let(:admin) { nil }
-    let(:attrs) { {} }
-    let(:jim) { Fabricate :user, attrs.merge(admin: admin) }
 
     context "user is logged in" do
 
-      before { set_current_user(jim) }
+      before { set_current_user(admin_user) }
 
       context "user is admin" do
         let(:admin) { true }
@@ -39,15 +41,9 @@ RSpec.describe Admin::OfficeLocationsController do
 
   describe 'POST create' do
     render_views
-    let(:admin) { nil }
-    let(:attrs) { {} }
-    let(:jim) { Fabricate :user, attrs.merge(admin: admin) }
-    let(:office) { Fabricate.attributes_for(:office_location) }
-    subject(:response) { post :create, office_location: office }
-    subject(:make_request) { post :create, office_location: office }
-
+    subject(:request) { post :create, office_location: Fabricate.attributes_for(:office_location)  }
     context "user is logged in" do
-      before { set_current_user(jim) }
+      before { set_current_user(admin_user) }
 
       context "user is admin" do
         let(:admin) { true }
@@ -56,9 +52,40 @@ RSpec.describe Admin::OfficeLocationsController do
           it { is_expected.to redirect_to admin_office_locations_path }
 
           it "adds another office location" do
-            make_request
+            request
             expect(OfficeLocation.count).to eql 1
           end
+        end
+      end
+    end
+  end
+
+  describe 'GET edit' do
+    render_views
+    subject(:request) { get :edit, id: office.id }
+    context "user is logged in" do
+      before { set_current_user(admin_user) }
+
+      context "user is admin" do
+        let(:admin) { true }
+        it { is_expected.to render_template(:edit) }
+
+      end
+    end
+  end
+
+  describe 'PATCH update' do
+    subject(:response) { patch :update, id: office.id, office_location: { name: "Boo Boo" }  }
+    context "user is logged in" do
+      before do
+        set_current_user(admin_user)
+      end
+      context "user is admin" do
+        let(:admin) { true }
+        it { is_expected.to redirect_to admin_office_locations_path }
+        it "updates the office location" do
+          response
+          expect(office.reload.name).to eql "Boo Boo"
         end
       end
     end
