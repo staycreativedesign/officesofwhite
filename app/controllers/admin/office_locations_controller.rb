@@ -17,6 +17,13 @@ class Admin::OfficeLocationsController < AdminsController
 
   def update
     find_office
+    if @office.update_attributes(office_params)
+      redirect_to admin_office_locations_path
+      flash[:notice] = "Office Location updated"
+    else
+      render :edit
+      flash[:notice] = "Unable to save office location"
+    end
   end
 
   def create
@@ -31,6 +38,7 @@ class Admin::OfficeLocationsController < AdminsController
   end
 
   def destroy
+    find_office
   end
 
   private
