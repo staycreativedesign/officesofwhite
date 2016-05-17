@@ -180,7 +180,23 @@
       %table.table.table-condensed
         %thead
           %tr.text-uppercase
-            %th{:colspan => "4"} contract information
+            %th{:colspan => "4"} Initial Registration
+        %tbody
+          %tr
+            %td.text-left
+              Registration Information
+            %td.text-right
+              %i.glyphicon.glyphicon-file.ml10
+              %i.glyphicon.glyphicon-ok.ml10.flat-green
+              %i.glyphicon.glyphicon-remove.ml10.flat-red
+
+  .row
+    .col-md-12
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"}
+              contract information
         %tbody
           %tr
             %td.text-left
@@ -193,27 +209,16 @@
               Set Office Location
             %td.text-right
               = select_tag("hello")
+              %i.glyphicon.glyphicon-ok.ml10.flat-green
           %tr
             %td.text-left
               Set Total Price
             %td.text-right
               = text_field_tag("hello")
+              %i.glyphicon.glyphicon-ok.ml10.flat-green
           %tr
             %td.text-left
               Set Initial Deposit
             %td.text-right
               = text_field_tag("hello")
-  .row
-    .col-md-12
-      %table.table.table-condensed
-        %thead
-          %tr.text-uppercase
-            %th{:colspan => "4"} Initial Registration
-        %tbody
-          %tr
-            %td.text-left
-              Registration Information
-            %td.text-right
-              %i.glyphicon.glyphicon-file.ml10
               %i.glyphicon.glyphicon-ok.ml10.flat-green
-              %i.glyphicon.glyphicon-remove.ml10.flat-red
