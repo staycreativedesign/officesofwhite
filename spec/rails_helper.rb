@@ -9,6 +9,7 @@ require 'capybara/poltergeist'
 require 'sidekiq/testing'
 require 'capybara/rspec'
 require 'database_cleaner'
+# Capybara.default_driver = :selenium
 Capybara.default_driver = :poltergeist
 Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
