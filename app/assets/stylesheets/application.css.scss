@@ -28,7 +28,4 @@
 @import "pages/receipts";
 @import "admin/panel";
 @import "admin/admin_user";
-// 1. Globals
-// everything that is used more than once through site
-.bold {font-weight: bold;}
-img {max-width: 100%;}
+@import "admin/office_locations";
