@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :panel, only: [:index]
     resources :receipts
-    resources :users
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :office_locations
   end
 
