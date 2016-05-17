@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   before_validation :set_phone_numbers_and_ssn, on: :create
   has_many :receipts
-  has_one :office_location
+  belongs_to :office_location
   has_secure_password
 
   delegate :is_approved, to: :letter_of_representation, prefix: true
