@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'formats the phone number' do
-        expect(User.last.phone_number).to eq('305 - 6t19 - 3724')
+        expect(User.last.phone_number).to eq('305 - 619 - 3724')
       end
     end
     context 'user does not fill out form correctly' do
