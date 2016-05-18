@@ -1,2 +1,31 @@
-%h1
-  Hello
+.col-md-10
+  .row.mt20
+    .col-md-12
+      %table.table.table-striped.table-hover.border-box
+        %tr.text-uppercase
+          %th
+            Name
+          %th
+            Address
+          %th
+            Phone
+          %th
+            Fax
+          %th
+            Email
+          - @office_locations.each do |office|
+            %tr.fs10
+              %td
+                = link_to admin_office_location_path(office) do
+                  = office.name
+              %td
+                = office.address
+                = office.city
+                = office.state
+                = office.zipcode
+              %td
+                = office.phone_number
+              %td
+                = office.fax_number
+              %td
+                = office.email
