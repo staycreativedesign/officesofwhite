@@ -9,6 +9,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags
   %body
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "flash #{key}"
     #admin-wrapper
       .container-fluid
         .row.admin-nav
@@ -26,38 +28,36 @@
                 %th
                   Menu
               %tr
-                %td
+                %td.fs11
                   = link_to admin_users_path, id: "users" do
                     %i.glyphicon.glyphicon-plus.mr5
                     Clients
               %tr
-                %td
+                %td.fs11
                   = link_to admin_office_locations_path, id: "office" do
                     %i.glyphicon.glyphicon-plus.mr5
                     Office Locations
               %tr
-                %td
+                %td.fs11
                   %i.glyphicon.glyphicon-plus.mr5
                   Archived Clients
             %table.table.table-hover.mt20
               %tr.text-uppercase.border-box
                 %th
-                  Office Location
+                  Offices
               %tr
-                %td
+                %td.fs11
                   = link_to new_admin_office_location_path, id: "add-office" do
                     %i.glyphicon.glyphicon-plus.mr5
                     New Location
             %table.table.table-hover.mt20
               %tr.text-uppercase.border-box
                 %th
-                  Client Options
+                  Client
               %tr
-                %td
+                %td.fs11
                   %i.glyphicon.glyphicon-plus.mr5
                   Archive Client
           = yield
-- flash.each do |key, value|
-  = content_tag :div, value, class: "flash #{key}"
 
 = debug params if Rails.env.development?
