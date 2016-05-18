@@ -39,6 +39,9 @@ class Admin::OfficeLocationsController < AdminsController
 
   def destroy
     find_office
+    @office.destroy
+    redirect_to admin_office_locations_path
+    flash[:notice] = "Office Location removed"
   end
 
   private
