@@ -20,6 +20,12 @@ RSpec.describe Admin::OfficeLocationsController do
       context "user is admin" do
         let(:admin) { true }
         it { is_expected.to render_template :index }
+
+        it "assigns @office_locations" do
+          response
+          first_office = Fabricate(:office_location)
+          expect(assigns(:office_locations)).to eq([first_office])
+        end
       end
     end
   end
@@ -86,6 +92,23 @@ RSpec.describe Admin::OfficeLocationsController do
         it "updates the office location" do
           response
           expect(office.reload.name).to eql "Boo Boo"
+        end
+      end
+    end
+  end
+
+  describe 'DELETE destroy' do
+    subject(:request) { delete :destroy, id: office.id }
+    context "user is logged in" do
+      before { set_current_user(admin_user) }
+
+      context "user is admin" do
+        let(:admin) { true }
+        it { is_expected.to redirect_to admin_office_locations_path }
+
+        it "deletes office location" do
+          request
+          expect(OfficeLocation.count).to eql(0)
         end
       end
     end
