@@ -1,0 +1,25 @@
+.col-md-10
+  .row.mt20
+    .col-md-12
+      %table.table.table-striped.table-hover.border-box
+        %tr.text-uppercase
+          %th
+            Client name
+          %th
+            Email
+          %th
+            Phone
+          %th.text-center
+            Step
+        %tr
+          - User.all.each do |user|
+            %td
+              = link_to admin_user_path(user) do
+                = user.first_name
+                = user.last_name
+            %td
+              = user.email
+            %td
+              = user.phone_number
+            %td.text-center
+              = user.step_number
