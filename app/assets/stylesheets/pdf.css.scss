@@ -1,5 +1,5 @@
 .container {
-  margin-top:70px;
+  margin-top:10px;
 }
 div {
   font-size: 10px;
@@ -16,7 +16,7 @@ div {
 }
 
 .initials-area {
-  align-self: flex-end
+  width: 100%;
 }
 
 .sign-area {
@@ -54,14 +54,14 @@ div {
 
 .documents p, .documents li {
   padding: 3px 0;
-  line-height: 16px;
+  line-height: 5px;
 }
 
 .mt70 { margin-top: 70px }
 .text-up { text-transform: uppercase; }
 
 .line-height-fix {
-  line-height: 10px;
+  line-height: 5x;
 }
 
 .page-break {
@@ -141,4 +141,8 @@ div {
 
 .clear {
   clear: both;
+}
+
+p {
+  padding: 0px auto
 }

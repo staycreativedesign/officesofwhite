@@ -5,6 +5,15 @@ class Admin::UsersController < AdminsController
 
   def show
     find_user
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@user.first_name}_#{@user.last_name}",
+               layout:'layouts/submission.pdf.haml',
+               template: 'layouts/registration.pdf.haml',
+               margin:  { top: -20 }
+      end
+    end
   end
 
   def edit
