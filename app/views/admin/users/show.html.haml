@@ -186,7 +186,8 @@
             %td.text-left
               Registration Information
             %td.text-right
-              %i.glyphicon.glyphicon-file.ml10
+              = link_to(admin_user_path(@user, format: 'pdf'), target: "_blank") do
+                %i.glyphicon.glyphicon-file.ml10
               %i.glyphicon.glyphicon-ok.ml10.flat-green
               %i.glyphicon.glyphicon-remove.ml10.flat-red
 
@@ -208,8 +209,11 @@
             %td.text-left
               Set Office Location
             %td.text-right
-              = select_tag("hello")
-              %i.glyphicon.glyphicon-ok.ml10.flat-green
+              = form_for [:admin, @user], remote: true do |f|
+                = f.select(:office_location, options_from_collection_for_select(OfficeLocation.all, "id", "state"))
+                = f.button(class: "nob noba norp") do
+                  %i.glyphicon.glyphicon-ok.ml10.flat-green
+
           %tr
             %td.text-left
               Set Total Price
