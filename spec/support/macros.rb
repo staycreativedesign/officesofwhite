@@ -23,7 +23,7 @@ def clear_current_user
 end
 
 def selenium_trigger_click(element_name)
-  if Capybara.default_driver == :selenium
+  if Capybara.default_driver == :selenium || Capybara.javascript_driver == :selenium
     page.find(element_name).click
   else
     page.find(element_name).trigger('click')
