@@ -186,12 +186,20 @@
             %td.text-left
               Registration Information
             %td.text-right
-              = link_to(admin_user_path(@user, format: 'pdf'), target: "_blank") do
-                %i.glyphicon.glyphicon-file.ml10
-              %i.glyphicon.glyphicon-ok.ml10.flat-green
-              %i.glyphicon.glyphicon-remove.ml10.flat-red
+              %ul.list-inline
+                %li
+                  = link_to(admin_user_path(@user, format: 'pdf'), target: "_blank") do
+                    %i.glyphicon.glyphicon-file
+                %li
+                  = form_for([:admin, @user], remote: true) do |f|
+                    = hidden_field(:user, :approved, value: true)
+                    = f.button(class: "nob noba nolp norp", id: "approve-registration") do
+                      %i.glyphicon.glyphicon-ok.flat-green
+                %li
+                  = link_to admin_user_path, method: :delete do
+                    %i.glyphicon.glyphicon-remove.flat-red
 
-  .row
+  #contract-start.row{style: @user.approved ? '' : 'display:none'}
     .col-md-12
       %table.table.table-condensed
         %thead
@@ -209,9 +217,9 @@
             %td.text-left
               Set Office Location
             %td.text-right
-              = form_for [:admin, @user], remote: true do |f|
-                = f.select(:office_location, options_from_collection_for_select(OfficeLocation.all, "id", "state"))
-                = f.button(class: "nob noba norp") do
+              = form_for [:admin, @user], class: "fs14", remote: true do |f|
+                = f.select("office_location_id", OfficeLocation.all.collect { |p| [p.name, p.id ]},{}, class: "mw152 fs14")
+                = f.button(class: "nob noba nolp norp") do
                   %i.glyphicon.glyphicon-ok.ml10.flat-green
 
           %tr
