@@ -12,11 +12,11 @@
           %th
             Fax
           %th
-            Email
+          %th
           - @office_locations.each do |office|
             %tr.fs10
               %td
-                = link_to admin_office_location_path(office) do
+                = link_to edit_admin_office_location_path(office) do
                   = office.name
               %td
                 = office.address
@@ -28,4 +28,8 @@
               %td
                 = office.fax_number
               %td
-                = office.email
+                = link_to edit_admin_office_location_path(office) do
+                  %i.glyphicon.glyphicon-pencil
+              %td
+                = link_to admin_office_location_path(office), method: :delete do
+                  %i.glyphicon.glyphicon-remove.flat-red
