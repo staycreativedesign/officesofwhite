@@ -1,0 +1,212 @@
+%p.text-center
+  %strong
+  Registration Information
+%div.personal-information
+  %p
+    %strong
+      Personal Information
+  %p.width-30
+    %strong
+      Name:
+    = @user.suffix.capitalize
+    = @user.first_name
+    = @user.try(:middle_name)
+    = @user.last_name
+  %p.width-30
+    %strong
+      Email:
+    = @user.email
+  %p.width-30
+    %strong
+      DOB
+    = @user.dob
+  %p.clear
+  %p.width-30
+    %strong
+      Primary number:
+    = @user.phone_number
+  %p.width-30
+    %strong
+      Other number:
+    = @user.other_number
+  %p.width-30
+    %strong
+      DL:
+    = @user.driver_license
+  %p.clear
+  %p.width-30
+    %strong
+      SSN:
+    = @user.social_security
+.clear
+%div.residence-information
+  %p
+    %strong
+      Residence Information
+  %p
+    %strong
+      Residence Address:
+    = @user.home_address
+  %p.width-30
+    %strong
+      City:
+    = @user.city
+  %p.width-30
+    %strong
+      State:
+    = @user.state
+  %p.width-30
+    %strong
+      Zipcode:
+    = @user.zipcode
+  .clear
+  %p.width-30
+    %strong
+      Type:
+    = @user.residence_type
+  %p.width-30
+    %strong
+      Time at address years:
+    = @user.time_at_address_years
+  %p.width-30
+    %strong
+      Time at address months:
+    = @user.time_at_address_months
+  %p.width-30
+    %strong
+      Household payment:
+    = precede "$" do
+      = succeed ".00" do
+        = @user.household_payment
+.clear
+%div.employment-information
+  %p
+    %strong
+      Employment Information
+  %p.width-30
+    %strong
+      Employer name:
+    = @user.employer_name
+  %p.width-30
+    %strong
+      Occupation:
+    = @user.occupation
+  %p.width-30
+    %strong
+      Gross Income:
+    = @user.employment_gross_income
+  .clear
+  %p
+    %strong
+      Address:
+    = @user.employment_address
+  %p.width-30
+    %strong
+      City:
+    = @user.employment_city
+  %p.width-30
+    %strong
+      State:
+    = @user.employment_state
+  %p.width-30
+    %strong
+      Zipcode:
+    = @user.employment_zipcode
+  .clear
+  %p.width-30
+    %strong
+      Employed for years:
+    = @user.employment_years
+  %p.width-30
+    %strong
+      Employed for months:
+    = @user.employment_months
+.clear
+%div.credit-monitoring
+  %p
+    %strong
+      Credit Monitoring Service Information
+  %p.width-30
+    %strong
+      Login:
+    = @user.credit_login
+  %p.width-30
+    %strong
+      Password:
+    = @user.credit_password
+  %p.width-30
+    %strong
+      Mother's DOB
+  .clear
+  %p.width-30
+    %strong
+      Referred by:
+    = @user.referred_by
+.clear
+%p
+  The Offices of White and Associates is not a credit restoration service. We specialize in victims of identity theft in regards to false and inaccurate information that appears on a credit file. The Offices of White and Associates does not condone disputing accurate information on a credit report. It is a federal crime to make any false or fraudulent statement or representation to the government. By clicking submit not only are you certifying that you are a victim of identity theft, but you are also certifying that you are mentally alert and competent, fully informed, and was not subjected to undue influence or coercion.
+
+%p.width-30
+  %strong
+    - if @user.middle_name.present?
+      =  @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
+    - else
+      = @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
+%p.sign-area
+  I have read and acknowledge the statement above.
+%div.clear
+%p.width-30
+  %strong
+    - if @user.middle_name.present?
+      =  @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
+    - else
+      = @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
+%p.sign-area
+  I have read and accept the terms and conditions.
+%div.clear
+%p.width-30
+  %strong
+    - if @user.middle_name.present?
+      =  @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
+    - else
+      = @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
+%p.sign-area
+  I certify that I am supplying information in regards to my own personal credit, and am not representing someone else.
+%div.clear
+%p.width-30
+  %strong
+    - if @user.middle_name.present?
+      =  @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
+    - else
+      = @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
+%p.sign-area
+  I understand that it is a federal crime to obtain personal credit information for someone other than myself.
+%div.clear
+%p.width-30
+  %strong
+    - if @user.middle_name.present?
+      =  @user.first_name[0].capitalize + "." + @user.try(:middle_name)[0].capitalize + "." + @user.last_name[0] + "."
+    - else
+      = @user.first_name[0].capitalize + "." + @user.last_name[0] + "."
+%p.sign-area
+  The Offices of White and Associates is not responsible for any misrepresentations and or false statements or documentation.
+%div.clear
+%p.width-30
+  %strong
+    Signature
+%p.sa-fix
+  = @user.first_name
+  = @user.try(:middle_name)
+  = @user.last_name
+%div.clear
+%p.width-30
+  %strong
+    = @user.registration_ip
+%p.sign-area
+  Please be aware that your IP address has been attached to your file
+%div.clear
+%p.width-30
+  %strong
+    Date
+%p.sign-area
+  = Date.today.strftime('%D')
