@@ -23,8 +23,15 @@ class Admin::UsersController < AdminsController
   def update
     find_user
     if @user.update_attributes(user_params)
-      redirect_to admin_user_path(@user)
-      flash[:notice] = 'User updated'
+      respond_to do |format|
+        format.html {
+          redirect_to admin_user_path(@user)
+          flash[:notice] = 'User updated'
+        }
+
+        format.js {
+        }
+      end
     else
       render :edit
       flash[:notice] = 'User not updated'
