@@ -5,6 +5,8 @@
         = @user.first_name
         = @user.try(:middle_name)
         = @user.last_name
+
+        %span.lighter.is-pro-bono{style: @user.pro_bono? ? "" : "display:none"} Pro Bono
   .row
     .col-md-12.border
       %table.table.table-condensed
@@ -211,26 +213,48 @@
             %td.text-left
               Pro bono
             %td.text-right
-              %i.glyphicon.glyphicon-ok.ml10.flat-green
-              %i.glyphicon.glyphicon-remove.ml10.flat-red
+              %ul.list-inline.nomb
+                %li
+                  = form_for([:admin, @user], remote: true) do |f|
+                    = hidden_field(:user, :pro_bono, value: true)
+                    = f.button(class: "nob noba nolp norp", id: "approve-pro-bono") do
+                      %i.glyphicon.glyphicon-ok.flat-green
+                %li
+                  = form_for([:admin, @user], remote: true) do |f|
+                    = hidden_field(:user, :pro_bono, value: false)
+                    = f.button(class: "nob noba nolp norp", id: "approve-pro-bono") do
+                      %i.glyphicon.glyphicon-remove.flat-red
           %tr
             %td.text-left
               Set Office Location
             %td.text-right
-              = form_for [:admin, @user], class: "fs14", remote: true do |f|
-                = f.select("office_location_id", OfficeLocation.all.collect { |p| [p.name, p.id ]},{}, class: "mw152 fs14")
-                = f.button(class: "nob noba nolp norp") do
-                  %i.glyphicon.glyphicon-ok.ml10.flat-green
-
+              %ul.list-inline.nomb
+                %li
+                  = form_for [:admin, @user], class: "fs14", remote: true do |f|
+                    = f.select("office_location_id", OfficeLocation.all.collect { |p| [p.state, p.id ]},{}, class: "mw152 fs14")
+                    = f.button(class: "nob noba nolp norp") do
+                      %i.glyphicon.glyphicon-ok.flat-green.ml10
           %tr
             %td.text-left
-              Set Total Price
+              Total Price
             %td.text-right
-              = text_field_tag("hello")
-              %i.glyphicon.glyphicon-ok.ml10.flat-green
+              %ul.list-inline.nomb
+                %li
+                  = text_field_tag("hello")
+                  %i.glyphicon.glyphicon-ok.flat-green.ml10
           %tr
             %td.text-left
-              Set Initial Deposit
+              Initial Deposit
             %td.text-right
-              = text_field_tag("hello")
-              %i.glyphicon.glyphicon-ok.ml10.flat-green
+              %ul.list-inline.nomb
+                %li
+                  = text_field_tag("hello")
+                  %i.glyphicon.glyphicon-ok.flat-green.ml10
+          %tr
+            %td.text-left
+              Removal price
+            %td.text-right
+              %ul.list-inline.nomb
+                %li
+                  = text_field_tag("hello")
+                  %i.glyphicon.glyphicon-ok.flat-green.ml10
