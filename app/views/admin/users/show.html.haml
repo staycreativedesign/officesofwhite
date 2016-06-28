@@ -2,10 +2,7 @@
   .row
     .col-md-12
       %h4.text-uppercase
-        = @user.first_name
-        = @user.try(:middle_name)
-        = @user.last_name
-
+        = full_user_name(@user)
         %span.lighter.is-pro-bono{style: @user.pro_bono? ? "" : "display:none"} Pro Bono
   .row
     .col-md-12.border
@@ -258,3 +255,23 @@
                 %li
                   = text_field_tag("hello")
                   %i.glyphicon.glyphicon-ok.flat-green.ml10
+  #invoice-start.row{style: @user.approved ? '' : 'display:none'}
+    .col-md-12
+      %table.table.table-condensed
+        %thead
+          %tr.text-uppercase
+            %th{:colspan => "4"}
+              invoice information
+        %tbody
+          - if @user.receipts.present?
+            %tr
+              %td.text-left
+                invoice information
+              %td.text-right
+          - else
+            %tr
+              %td.text-left
+                No Invoices
+              %td.text-right
+                = link_to new_admin_user_receipt_path(@user) do
+                  %i.glyphicon.glyphicon-plus.flat-green.ml10
