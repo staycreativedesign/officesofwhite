@@ -1,6 +1,6 @@
 class Admin::PanelController < AdminsController
   def index
-    @users = User.all
+    @users = User.where(admin: false)
     @total_payments_received = total_payments_received
     @total_pending_payments = total_pending_payments
   end
