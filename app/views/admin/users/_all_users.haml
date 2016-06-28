@@ -11,12 +11,11 @@
             Phone
           %th.text-center
             Step
-          - User.all.each do |user|
+          - @users.each do |user|
             %tr
               %td
                 = link_to admin_user_path(user) do
-                  = user.first_name
-                  = user.last_name
+                  = full_user_name(user)
               %td
                 = user.email
               %td
