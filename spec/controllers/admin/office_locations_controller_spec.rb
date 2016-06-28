@@ -24,7 +24,7 @@ RSpec.describe Admin::OfficeLocationsController do
         it "assigns @office_locations" do
           response
           first_office = Fabricate(:office_location)
-          expect(assigns(:office_locations)).to eq([first_office])
+          expect(OfficeLocation.all.count).to eq 1
         end
       end
     end
