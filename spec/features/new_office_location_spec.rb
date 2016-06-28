@@ -8,7 +8,7 @@ feature 'add new office location' do
     selenium_trigger_click('#office')
     selenium_trigger_click('#add-office')
     expect(page).to have_content("Office Name:")
-    fill_in("office_location[name]", with: Faker::Company.name)
+    fill_in("office_location[name]", with: "Gus Company")
     fill_in("office_location[address]", with: Faker::Address.street_address)
     fill_in("office_location[city]", with: Faker::Address.city)
     select('FL', from: 'office_location[state]')
@@ -17,6 +17,6 @@ feature 'add new office location' do
     fill_in("office_location[fax_number]", with: Faker::PhoneNumber.cell_phone)
     fill_in("office_location[email]", with: Faker::Internet.email)
     selenium_trigger_click("#submit")
-    expect(page).to have_content('Hello')
+    expect(page).to have_content('Gus Company')
   end
 end
