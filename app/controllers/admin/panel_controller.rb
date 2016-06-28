@@ -8,7 +8,7 @@ class Admin::PanelController < AdminsController
   private
 
   def total_payments_received
-    receipts = ReceiptItem.select { |obj| obj.paid? }
+    receipts = ReceiptItem.select(&:paid)
     total_value = receipts.map { |rec| rec.value.to_f }
     total_value.reduce(:+)
   end
