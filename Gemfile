@@ -44,6 +44,7 @@ group :test do
   gem 'fabrication'
 end
 group :development, :test do
+  gem 'rubocop'
   gem 'faker'
   gem 'byebug'
   gem 'letter_opener'
